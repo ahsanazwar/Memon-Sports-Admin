@@ -1,0 +1,28 @@
+{
+  "en": {
+    "LOGIN": "Login",
+    "ADMINLOGIN": "Admin Login",
+    "SIGNUP": "Sign Up",
+    "EMAIL": "Email",
+    "ORGANIZATIONNAME": "Organization Name",
+    "PASSWORD": "Password",
+    "RETYPEPASSWORD": "Retype Password",
+    "FORGOTPASSWORD": "Forgot Password",
+    "MOBILE": "Mobile",
+    "DONTHAVEACCOUNT": "Don't have an account? Sign up instead.",
+    "FIRSTNAME": "First Name",
+    "LASTNAME": "Last Name"
+  },
+  "es": {
+    "LOGIN": "Entrar",
+    "SIGNUP": "Regístrate",
+    "EMAIL": "Correo electrónico",
+    "PASSWORD": "Contraseña",
+    "RETYPEPASSWORD": "Vuelva a escribir la contraseña",
+    "FORGOTPASSWORD": "Se te olvidó tu contraseña",
+    "MOBILE": "Móvil",
+    "DONTHAVEACCOUNT": "¿No tienes una cuenta? Regístrate en su lugar.",
+    "FIRSTNAME": "Nombre de pila",
+    "LASTNAME": "Apellido"
+  }
+}

@@ -1,0 +1,42 @@
+.text-section-section {
+	background: url(../../public/images/text-bg.jpg);
+	padding: 100px 0;
+	position: relative;
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	.sec-title {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		h2 {
+			color: #fff;
+		}
+	}
+	&:before {
+		background: rgba(0, 0, 0, 0.9) none repeat scroll 0 0;
+		content: '';
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 0;
+	}
+	p {
+		font-size: 32px;
+		text-align: center;
+		color: #fff;
+	}
+	a {
+		background-color: #111e6c;
+		color: #fff;
+		border-radius: 45px;
+		padding: 12px 50px;
+		font-size: 16px;
+		display: table;
+		margin: 0 auto;
+		margin-top: 15px;
+	}
+}

@@ -1,0 +1,31 @@
+html {
+	font-size: 62.5%;
+
+	// @media only screen and (min-width: 1400px) and (min-resolution: 2dppx) {
+	//   font-size: 50%; //8px
+	// }
+
+	@media only screen and (max-width: 1200px) {
+		font-size: 56.25%; // 9px
+	}
+
+	@media only screen and (max-width: 900px) {
+		font-size: 50%; // 8px
+	}
+
+	@media only screen and (max-width: 600px) {
+		font-size: 43.75%; // 7px
+	}
+}
+
+body {
+	font-size: inherit;
+}
+
+h3 {
+	font-size: 2rem;
+}
+
+p {
+	font-size: 1.6rem;
+}

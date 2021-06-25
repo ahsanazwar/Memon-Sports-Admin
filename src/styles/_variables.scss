@@ -1,0 +1,125 @@
+// Bootstrap overrides
+//
+// Copy variables from `_variables.scss` to this file to override default values
+// without modifying source files.
+
+/* -------Start Of Website Color Branding-------- */
+
+$primary: #E7BA48;
+$secondary: #E34A48;
+$lightGery: #B9BCC1;
+$darkGrey: #636466;
+$grey: #231F20;
+$info: #003767;
+$blue: #0080B6;
+$danger: #dc3545;
+$success: #006F4A;
+$warning: #E7BA48;
+$white: #ffffff;
+$black: #000000;
+
+/* -------End Of Website Color Branding-------- */
+
+/* -------begin customization-------- */
+$body-bg: $white;
+$feeds-bg: #F5F4F0;
+$body-color: #414042;
+$theme-colors: ();
+// stylelint-disable-next-line scss/dollar-variable-default
+$theme-colors: map-merge(
+                (
+                        "primary": $primary,
+                        "secondary": $secondary,
+                        "white": $white,
+                        "inf0": $info,
+                        "black": $black,
+                        "lightGery": $lightGery,
+                        "grey": $grey
+
+                ),
+                $theme-colors
+);
+
+$font-family-base: 'Brown', sans-serif;
+$headings-font-family: 'Brown', sans-serif;
+$headings-color: $info;
+
+$h1-font-size: em(90);
+$h2-font-size: em(60); //done
+$h3-font-size: em(32);
+$h4-font-size: em(24); // done
+$h5-font-size: em(20); // done
+$h6-font-size: em(20); //done
+$lead-font-size: em(36);
+$headings-margin-bottom: 0px;
+
+$btn-border-radius: 50px;
+$input-border-radius: 5px;
+$input-border-color: #B9BCC1;
+$input-border-width: 1px;
+$input-padding-y: 20;
+$input-padding-x: 20;
+$input-font-size: em(24);
+$input-height: em(60, 24);
+$form-group-margin-bottom: em(39);
+$input-placeholder-color: #B9BCC1;
+$input-plaintext-color:  #B9BCC1;
+$link-hover-color: $secondary;
+
+$btn-padding-y: 0px;
+$btn-padding-x: 0px;
+$btn-border-width: 2px;
+$btn-focus-box-shadow: none;
+
+
+$navbar-dark-toggler-icon-bg: none;
+$navbar-light-toggler-icon-bg: none;
+$custom-checkbox-indicator-icon-checked: none;
+$custom-checkbox-indicator-icon-indeterminate: none;
+$custom-radio-indicator-icon-checked: none;
+$carousel-control-next-icon-bg: none;
+$carousel-control-prev-icon-bg: none;
+$form-feedback-icon-valid: none;
+$custom-select-indicator: none;
+$form-feedback-icon-invalid: none;
+
+::-moz-selection {
+  background: rgba($secondary, 0.23);
+}
+
+::selection {
+  background: rgba($secondary, 0.23);
+}
+
+$color-red-error: $danger !default;
+$color-green-success: $success;
+$color-grey-arrow: $grey !default;
+$zindex-select-dropdown: 1060 !default; // must be higher than a modal background (1050)
+
+//** Placeholder text color
+$input-color-placeholder: $input-placeholder-color !default;
+$input-alt-color-placeholder: rgba($input-color-placeholder, 0.5) !default;
+
+/* -------end customization-------- */
+
+@media (min-width: 1200px) and (max-width: 1599.98px) {
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px) {
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+}

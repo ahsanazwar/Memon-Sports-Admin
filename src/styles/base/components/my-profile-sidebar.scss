@@ -1,0 +1,170 @@
+.my-profile-sidebar {
+	width: 100%;
+	height: 100%;
+	background-color: #111e6c;
+	padding-bottom: 100px;
+	.sidebar-profile-info {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		background-color: #09113b;
+		padding: 30px;
+	}
+	h2 {
+		font-size: 28px;
+		color: #fff;
+		text-align: center;
+		margin: 8px 0 8px 0;
+	}
+	.credit-btn {
+		color: #fff;
+		display: inline-block;
+		font-size: 20px;
+		margin: 8px 0 8px 0;
+		position: relative;
+		&:before {
+			content: '';
+			position: absolute;
+			width: 0;
+			height: 1px;
+			bottom: 2px;
+			left: auto;
+			right: 0;
+			z-index: 9;
+			background-color: #fff;
+			transition: 0.5s all;
+		}
+		&:hover {
+			&:before {
+				width: 100%;
+				left: 0;
+				right: auto;
+			}
+		}
+	}
+	.sidebar-navigation {
+		padding-left: 0;
+		li {
+			a {
+				display: block;
+				width: 100%;
+				padding: 20px 15px;
+				color: #fff;
+				font-size: 18px;
+				position: relative;
+				&:before {
+					content: '';
+					position: absolute;
+					width: 0;
+					height: 1px;
+					bottom: 2px;
+					left: auto;
+					right: 0;
+					z-index: 9;
+					background-color: #fff;
+					transition: 0.5s all;
+				}
+				&:hover {
+					&:before {
+						width: 100%;
+						left: 0;
+						right: auto;
+					}
+				}
+				&.active {
+					&:before {
+						width: 100%;
+						left: 0;
+						right: auto;
+					}
+				}
+				svg {
+					margin: 0 25px;
+				}
+			}
+			&:nth-child(even) {
+				a {
+					background-color: #09113b;
+				}
+			}
+		}
+	}
+}
+
+.credit-sp {
+	display: inline-block;
+	color: #fff;
+	border-radius: 45px;
+	padding: 5px 15px;
+	background-color: #33408b;
+	margin: 8px 0 8px 0;
+}
+.dp-upload {
+	position: relative;
+	display: table;
+	margin: 0 auto;
+	.camera-link {
+		display: inline-block;
+		position: absolute;
+		right: 15px;
+		bottom: 46px;
+		color: #fff;
+		background: #111e6c;
+		border-radius: 100%;
+		padding: 3px 7px;
+		z-index: 999;
+		margin-bottom: 0;
+		overflow: hidden;
+		cursor: pointer;
+		svg {
+			path {
+				fill: #fff;
+			}
+		}
+		input {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			left: 0;
+			top: 0;
+			opacity: 0;
+			cursor: pointer;
+		}
+	}
+}
+.sidebar-dp {
+	width: 180px;
+	height: 180px;
+	border-radius: 100%;
+	border: 3px solid #fff;
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+	img {
+		width: 100%;
+		height: 100%;
+	}
+	&:before {
+		content: '';
+		position: absolute;
+		width: 0;
+		height: 100%;
+		bottom: 0;
+		left: auto;
+		right: 0;
+		z-index: 9;
+		background-color: rgba($color: #000000, $alpha: 0.4);
+		transition: 0.5s all;
+	}
+	&:hover {
+		&:before {
+			width: 100%;
+			left: 0;
+			right: auto;
+		}
+	}
+}
+
+.right-bar {
+	height: 1000px;
+}

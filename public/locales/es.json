@@ -1,0 +1,12 @@
+{
+  "LOGIN": "Entrar",
+  "SIGNUP": "Regístrate",
+  "EMAIL": "Correo electrónico",
+  "PASSWORD": "Contraseña",
+  "RETYPEPASSWORD": "Vuelva a escribir la contraseña",
+  "FORGOTPASSWORD": "Se te olvidó tu contraseña",
+  "MOBILE": "Móvil",
+  "DONTHAVEACCOUNT": "¿No tienes una cuenta? Regístrate en su lugar.",
+  "FIRSTNAME": "Nombre de pila",
+  "LASTNAME": "Apellido"
+}

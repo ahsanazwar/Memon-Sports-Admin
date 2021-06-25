@@ -1,0 +1,134 @@
+
+.main-header{
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    background: rgba(0, 0, 0, 0.4);
+    nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+        ul{
+            display: flex;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            li{
+                margin-right: em(50);
+                &:last-child{
+                    margin-right: 0;
+                }
+            }
+            a{
+                color: $white;
+                font-size: em(24);
+                font-family: 900;
+            }
+        }
+    }
+}
+.main-logo{
+    width: em(300);
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+.home-page-banner{
+    background-image: url('../assets/images/banner-bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: em(900);
+    display: flex;
+    align-items: flex-end;
+    .cricket-img{
+        width: em(700);
+    }
+    h2{
+        font-size: em(45);
+        color: $white;
+        font-weight: bold;
+    }
+    h1{
+        font-size: em(90);
+        color: $white;
+        font-weight: bold;
+    }
+    a{
+        padding: em(15) em(35);
+        font-size: em(25);
+        color: $white !important;
+        background-color:#133290;
+        border-radius: em(45);
+    }
+}
+.schedule-section{
+    padding-top: em(100);
+    background: #011c6d;
+    img{
+        height: em(870);
+        width: 100%;
+    }
+}
+.about-section{
+    padding: em(120) 0 em(90);
+    h2{
+        font-size: em(45);
+        font-weight: 900;
+        text-align: center;
+    }
+    .about-sub-head{
+        margin: em(55) 0 em(65);
+        font-size: em(18);
+        color: #9a9a9a;
+        text-align: center;
+    }
+    .about-card{
+        img{
+            width: em(100);
+            height: em(100);
+            margin: 0 auto;
+            display: block;
+            margin-bottom: em(20);
+        }
+        h3{
+            font-size: em(25);
+            text-align: center;
+            font-weight: 900;
+            margin-bottom: em(15);
+        }
+        p{
+            font-size: em(17);
+            text-align: center;
+            font-weight: 900;
+            color: #9a9a9a;
+        }
+    }
+}
+.main-footer{
+    background-color: #051344;
+    padding: em(25) 0;
+    .main-footer-wrap{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .footer-logo{
+            width: em(200);
+            img{
+                width: 100%;
+            }
+        }
+        .copy-text{
+            color: $white;
+            font-size: em(24);
+            font-weight: 900;
+            letter-spacing: 1.2;
+            margin: 0;
+        }
+    }
+}

@@ -1,0 +1,30 @@
+.services-section {
+	padding: 120px 0;
+}
+
+.single-service-item {
+	margin: 20px 0;
+	.text-holder {
+		h3 {
+			color: #111e6c;
+			font-size: 20px;
+			font-weight: 700;
+			line-height: 28px;
+			margin: 20px 0 6px;
+			text-transform: capitalize;
+			span {
+				color: #4e60cc;
+			}
+		}
+		p {
+			color: #000;
+		}
+	}
+}
+
+.latest-products-section {
+	padding-bottom: 100px;
+}
+.single-project-item {
+	margin: 15px 0;
+}

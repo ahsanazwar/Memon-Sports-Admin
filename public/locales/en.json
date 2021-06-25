@@ -1,0 +1,14 @@
+{
+  "LOGIN": "Login",
+  "ADMINLOGIN": "Admin Login",
+  "SIGNUP": "Sign Up",
+  "EMAIL": "Email",
+  "ORGANIZATIONNAME": "Organization Name",
+  "PASSWORD": "Password",
+  "RETYPEPASSWORD": "Retype Password",
+  "FORGOTPASSWORD": "Forgot Password",
+  "MOBILE": "Mobile",
+  "DONTHAVEACCOUNT": "Don't have an account? Sign up instead.",
+  "FIRSTNAME": "First Name",
+  "LASTNAME": "Last Name"
+}

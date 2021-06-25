@@ -1,0 +1,67 @@
+.customer-feedback-section {
+	background: #efefef;
+	padding: 80px 0;
+	.sub-title {
+		color: #777272;
+		font-size: 20px;
+		font-weight: 700;
+		text-align: center;
+		margin-bottom: 5px;
+	}
+	.sub-text {
+		font-size: #000;
+		font-size: 16px;
+		text-align: center;
+		margin-bottom: 35px;
+	}
+	.slick-dots {
+		li {
+			button {
+				&:before {
+					color: #111e6c;
+					font-size: 15px;
+				}
+			}
+		}
+	}
+	.sec-title {
+		text-align: center;
+		h2 {
+			color: #111e6c;
+			margin-bottom: 20px;
+			span {
+				color: #4e60cc;
+			}
+		}
+		.border {
+			background: #4e60cc;
+			height: 2px;
+			width: 70px;
+			display: inline-block;
+		}
+	}
+	.text-box {
+		padding-top: 70px;
+	}
+	.text {
+		p {
+			color: rgb(17, 17, 17);
+			font-size: 18px;
+			line-height: 32px;
+			margin-bottom: 27px;
+		}
+		h3 {
+			color: #111e6c;
+			font-size: 20px;
+			font-weight: 700;
+			margin: 0 0 10px;
+			text-transform: capitalize;
+		}
+		h4 {
+			color: #4e60cc;
+			font-size: 16px;
+			font-weight: 700;
+			text-transform: capitalize;
+		}
+	}
+}

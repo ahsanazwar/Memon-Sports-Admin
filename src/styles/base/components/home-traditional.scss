@@ -1,0 +1,30 @@
+.tradition-section {
+	padding: 100px 0 50px;
+	&.single-section {
+		padding: 0px 0 120px;
+	}
+	h2 {
+		text-align: center;
+	}
+	.tradition-item {
+		border: 1px solid #111e6c;
+		border-radius: 5px;
+		padding: 20px 30px;
+		h3 {
+			color: #111e6c;
+			text-align: center;
+		}
+		a {
+			background: #111e6c;
+			color: #fff;
+			border-radius: 5px;
+			margin: 15px auto;
+			padding: 10px 25px;
+			display: inline-block;
+		}
+		.price-text {
+			color: #000;
+			font-weight: 900;
+		}
+	}
+}

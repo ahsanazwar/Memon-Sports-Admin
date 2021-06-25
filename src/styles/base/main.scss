@@ -1,0 +1,37 @@
+// Importer of module content [theme, function, and components ]
+// libs
+@import 'mixins';
+@import 'animations';
+@import 'base';
+
+html {
+	height: 100%;
+	width: 100%;
+}
+.base {
+	// general settings
+	@import 'general';
+	@import 'components/home-welcome.scss';
+	@import 'components/services-section.scss';
+	@import 'components/text-section.scss';
+	@import 'components/customer-feedback.scss';
+	@import 'components/icon-slider-sec.scss';
+	@import 'components/footer-section.scss';
+	@import 'components/home-banner-section.scss';
+	@import 'components/inner-banner.scss';
+	@import 'components/main-services.scss';
+	@import 'components/contact-form.scss';
+	@import 'components/about-master.scss';
+	@import 'components/team-slider.scss';
+	@import 'components/profile-banner.scss';
+	@import 'components/my-profile-sidebar.scss';
+	@import 'components/user-profile-section.scss';
+	@import 'components/garden-component.scss';
+	@import 'components/chat-box.scss';
+	@import 'components/home-traditional.scss';
+	@import 'components/content-section.scss';
+	@import 'components/popup-styling.scss';
+	@import 'components/money-cycle-info';
+	@import 'components/credit-card-listing.scss';
+	@import 'components/traditional-email-temp.scss';
+}

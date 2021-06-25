@@ -1,0 +1,48 @@
+.card-listing {
+	padding: 100px 0;
+	h2 {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		color: #111e6c;
+		margin-bottom: 20px;
+		.add-new-card-btn {
+			font-size: 16px;
+			text-decoration: underline;
+		}
+	}
+	ul {
+		list-style: none;
+		padding-left: 0;
+		border: 1px solid rgb(230, 230, 230);
+		max-height: 300px;
+		overflow-y: scroll;
+		li {
+			display: flex;
+			align-items: center;
+			padding: 40px 5px 25px;
+			border-bottom: 1px solid #000;
+			p {
+				margin-bottom: 0;
+				span {
+					font-weight: 900;
+				}
+			}
+			.card-detail {
+				margin-right: 35px;
+			}
+			.edit-btn {
+				background-color: transparent;
+				border: none;
+				color: rgb(206, 206, 0);
+				font-size: 16px;
+			}
+			.del-btn {
+				background-color: transparent;
+				border: none;
+				color: rgb(218, 22, 22);
+				font-size: 16px;
+			}
+		}
+	}
+}

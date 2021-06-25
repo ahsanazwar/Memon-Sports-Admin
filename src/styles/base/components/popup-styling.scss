@@ -1,0 +1,35 @@
+.popup-overlay {
+	background: rgba($color: #000000, $alpha: 0.8);
+	.close {
+		position: absolute;
+		top: 15px;
+		right: 15px;
+		background: #111e6c;
+		color: #fff;
+		border: 1px solid #111e6c;
+		border-radius: 5px;
+		line-height: 1;
+		font-size: 25px;
+		outline-style: none;
+		cursor: pointer;
+		transition: 0.5;
+		&:hover {
+			background: #fff;
+			color: #111e6c;
+		}
+	}
+	.popup-content {
+		padding: 40px 50px;
+		border-radius: 15px;
+		font-size: 20px;
+	}
+	.st-inline-share-buttons {
+		text-align: left !important;
+		margin-top: 30px;
+	}
+	.st-remove-label {
+		span {
+			display: inline-block !important;
+		}
+	}
+}

@@ -1,0 +1,82 @@
+.search-bar-wrap {
+	input {
+		margin: 0;
+	}
+	.search-btn-group {
+		display: flex;
+		justify-content: flex-end;
+		a {
+			margin-left: 15px;
+			margin-bottom: 10px;
+			font-size: 14px;
+			font-weight: 600;
+			background: #111e6c;
+			color: #fff;
+			padding: 7px 14px;
+			border-radius: 50px;
+			display: inline-block;
+			overflow: hidden;
+			position: relative;
+			z-index: 9;
+			border: 1px solid #111e6c;
+			&:before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: auto;
+				right: 0;
+				width: 0;
+				height: 100%;
+				background: #fff;
+				z-index: -1;
+				transition: 0.5s all ease-in-out;
+			}
+			&:hover {
+				color: #111e6c;
+				&:before {
+					width: 100%;
+					left: 0;
+					right: auto;
+				}
+			}
+		}
+	}
+}
+
+.my-garder-btn-wrap {
+	width: 100%;
+	max-height: 500px;
+	overflow-y: scroll;
+	// background: rgb(17, 30, 108);
+	// background: linear-gradient(to bottom right, #111e6c, #fff);
+	border: 3px solid #ccc;
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	padding-top: 25px;
+	text-align: center;
+	flex-direction: column;
+	position: relative;
+	z-index: 9;
+	h2 {
+		color: #111e6c;
+		font-size: 44px;
+		font-weight: 900;
+	}
+	a {
+		background: #111e6c;
+		color: #fff;
+		padding: 8px 30px;
+	}
+}
+
+.garden-wrap {
+	margin-top: 50px;
+}
+
+.flower-logo {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+}

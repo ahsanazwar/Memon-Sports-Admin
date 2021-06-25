@@ -1,0 +1,50 @@
+[
+  {
+    "id": "LOGIN",
+    "defaultMessage": "Login"
+  },
+  {
+    "id": "ADMINLOGIN",
+    "defaultMessage": "Admin Login"
+  },
+  {
+    "id": "SIGNUP",
+    "defaultMessage": "Sign Up"
+  },
+  {
+    "id": "EMAIL",
+    "defaultMessage": "Email"
+  },
+  {
+    "id": "ORGANIZATIONNAME",
+    "defaultMessage": "Organization Name"
+  },
+  {
+    "id": "PASSWORD",
+    "defaultMessage": "Password"
+  },
+  {
+    "id": "RETYPEPASSWORD",
+    "defaultMessage": "Retype Password"
+  },
+  {
+    "id": "FORGOTPASSWORD",
+    "defaultMessage": "Forgot Password"
+  },
+  {
+    "id": "MOBILE",
+    "defaultMessage": "Mobile"
+  },
+  {
+    "id": "DONTHAVEACCOUNT",
+    "defaultMessage": "Don't have an account? Sign up instead."
+  },
+  {
+    "id": "FIRSTNAME",
+    "defaultMessage": "First Name"
+  },
+  {
+    "id": "LASTNAME",
+    "defaultMessage": "Last Name"
+  }
+]
