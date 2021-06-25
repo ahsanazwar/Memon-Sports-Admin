@@ -1,17 +1,35 @@
 .inner-page-banner{
     height: em(300);
-    background-color: #051344;
+    background-image: url(../assets/images/stadium-banner.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     display: flex;
     align-items: flex-end;
+    position: relative;
+    &:before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(49, 131, 255, 0.2);
+    }
     h1{
         text-transform: uppercase;
         letter-spacing: em(3);
         color: #fff;
+        font-size: em(48);
     }
 }
 
 .registration-form{
     padding: em(120) 0;
+    background-image: url(../assets/images/reg-bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     label{
         font-size: em(28);
         font-weight: 900;
@@ -34,5 +52,49 @@
             position: relative;
             top: em(7);
         }
+    }
+    .registration-form-wrapper{
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: em(25);
+        border-radius: 10px;
+    }
+    button{
+        margin-top: em(10);
+        font-size: em(20);
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        color: #fff;
+        background: #4e99b6;
+        border-radius: 45px;
+        width: 100%;
+        padding: em(10) em(30);
+        text-align: center;
+        border: none;
+    }
+}
+
+.profile-image{
+    margin: 0 0 em(30) 0;
+    background-color: #fff;
+    border-radius: 45px;
+    padding: em(6) 0;
+    border-radius: em(10);
+    border: 1px solid #ced4da;
+    position: relative;
+    span{
+        position: absolute;
+        left:em(15);
+        top: 50%;
+        transform: translateY(-50%);
+        background: #051344;
+        color: #fff;
+        padding: 2px 20px;
+        border-radius: 5px;
+    }
+    input{
+        margin: 0;
+        padding: 0;
+        opacity: 0;
     }
 }

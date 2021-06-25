@@ -66,12 +66,6 @@ class BaseView extends PureComponent {
 			>
 				<ConfigProvider locale={this.state.selectedLanguage.designLanguage}>
 					<div className="width height wrapper relative">
-						<Scroller
-							className="height width"
-							renderTrackHorizontal={(props) => (
-								<div {...props} className="track-vertical display-hidden" />
-							)}
-						>
 							{/*<div className="absolute top-10 right-15 z-index-1">
 								<Dropdown.Button
 									icon={<GlobalOutlined />}
@@ -82,7 +76,6 @@ class BaseView extends PureComponent {
 								</Dropdown.Button>
 							</div>*/}
 							{this.props.children}
-						</Scroller>
 					</div>
 				</ConfigProvider>
 			</IntlProvider>

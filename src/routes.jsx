@@ -31,59 +31,59 @@ class Routes extends React.Component {
 	render() {
 		return (
 			<Suspense fallback={<div>loading...</div>}>
-				<header className="main-header">  
-					<Container>
-						<Row>
-							<Col lg={12}>
-								<nav>
-									<div className="main-logo">
-										<Link to="/"><img src={"/assets/images/site-logo.png"} /></Link>
-									</div>
-									<ul>
-										<li>
-											<Link to="/">Home</Link>
-										</li>
-										<li>
-											<Link to="/">About us</Link>
-										</li>
-										<li>
-											<Link to="/">Schedule</Link>
-										</li>
-										<li>
-											<Link to="/registration">Registration</Link>
-										</li>
-										<li>
-										<Link to="/">Contact Us</Link>
-									</li>
-									</ul>
-								</nav>
-							</Col>
-						</Row>
-					</Container>
-				</header>
 				<Route>
-					
-						<Switch>
-							<BaseComponent>
-								<Route exact path="/home" component={Home} />
+					<Switch>
+						
+						<BaseComponent>
+							<header className="main-header">  
+							<Container>
+								<Row>
+									<Col lg={12}>
+										<nav>
+											<div className="main-logo">
+												<Link to="/"><img src={"/assets/images/site-logo.png"} /></Link>
+											</div>
+											<ul>
+												<li>
+													<Link to="/">Home</Link>
+												</li>
+												<li>
+													<Link to="/">About us</Link>
+												</li>
+												<li>
+													<Link to="/">Schedule</Link>
+												</li>
+												<li>
+													<Link to="/registration">Registration</Link>
+												</li>
+												<li>
+												<Link to="/">Contact Us</Link>
+											</li>
+											</ul>
+										</nav>
+									</Col>
+								</Row>
+							</Container>
+						</header>
+								<Route exact path="/" component={Home} />
 								<Route exact path="/registration" component={Registration} />
 								<Route exact path="/admin-login" component={AdminLogin} />
 								<Route exact path="/dashboard-player-list" component={DashboardPlayerList} />
-							</BaseComponent>
-						</Switch>	
+							<footer className="main-footer">
+								<Container>
+									<Row>
+										<Col lg={12}>
+											<div className="main-footer-wrap">
+												<div className="footer-logo"><Link to="/"><img src={"/assets/images/site-logo.png"} /></Link></div>
+												<div><p className="copy-text">Copy Rights © Memon Sports</p></div>
+											</div>
+										</Col>
+									</Row>
+								</Container>  
+							</footer>
+						</BaseComponent>
+					</Switch>	
 				</Route>
-				<footer className="main-footer">
-					<Container>
-						<Row>
-							<Col lg={12}>
-								<div className="main-footer-wrap">
-									<div className="footer-logo"><Link to="/"><img src={"/assets/images/site-logo.png"} /></Link></div>
-									<div><p className="copy-text">Copy Rights © Memon Sports</p></div>
-								</div>
-							</Col>
-						</Row>
-					</Container>  
-				</footer>	
 			</Suspense>
 		);
 	}

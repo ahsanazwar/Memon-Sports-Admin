@@ -1,12 +1,13 @@
 
+body{
+    overflow-x: hidden;
+}
+
 .main-header{
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 0;
     width: 100%;
     z-index: 99;
-    background: rgba(0, 0, 0, 0.4);
+    background: #003767;
+    padding: em(20) 0;
     nav{
     display: flex;
     align-items: center;
@@ -25,8 +26,8 @@
             }
             a{
                 color: $white;
-                font-size: em(24);
-                font-family: 900;
+                font-size: em(18);
+                font-weight: 900;
             }
         }
     }
@@ -35,7 +36,8 @@
     width: em(300);
     img{
         width: 100%;
-        height: 100%;
+        height: em(50);
+        object-fit: cover;
     }
 }
 .home-page-banner{
@@ -76,6 +78,7 @@
     }
 }
 .about-section{
+    background-color: #fff;
     padding: em(120) 0 em(90);
     h2{
         font-size: em(45);
@@ -129,6 +132,65 @@
             font-weight: 900;
             letter-spacing: 1.2;
             margin: 0;
+        }
+    }
+}
+
+.home-slider{
+    img{
+        width: 100%;
+        height: em(770);
+    }
+    .container-fluid{
+        padding: 0;
+    }
+    .slick-dots {
+        bottom: 50%;
+        width: auto;
+        li {
+            display: block;
+            margin-bottom: em(20);
+            button{
+                &:before{
+                    font-size: 16px;
+                    opacity: 0.5;
+                    color: #0dcaf0;
+                }
+            }
+            &.slick-active {
+                button{
+                    &:before {
+                        opacity: 1;
+                        color: #1272ff;
+                    }
+                }
+            }
+        }
+    }
+    .slides{
+        position: relative;
+    }
+    .slide-content{
+        position: absolute;
+        width: em(450);
+        top:50%;
+        transform: translateY(-50%);
+        left:em(150);
+        h2{
+            color: #fff;
+            font-size: em(50);
+        }
+        p{
+            color: #fff;
+            font-size: em(25);
+        }
+        a{
+            margin-top: em(10);
+            background-color: #4594e1;
+            border-radius: 5px;
+            color: #fff !important;
+            padding: em(15) em(30);
+            display: inline-block;
         }
     }
 }

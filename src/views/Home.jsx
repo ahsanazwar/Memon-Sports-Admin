@@ -1,12 +1,46 @@
 import React from "react";
 import {Container,Row,Col} from 'react-bootstrap';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 function Home() {
+    const settings = {
+        autoplay:true,
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      };
     return(
         <>
-            <div className="schedule-section">
+            {/* <div className="schedule-section">
                 <img className="img-fluid cricket-img" src={"/assets/images/schedule.jpg"} />
+            </div> */}
+            <div className="home-slider">
+                <Container fluid>
+                    <Row>
+                        <Col lg={12}>
+                            <Slider {...settings}>
+                                <div className="slides">
+                                    <img src={"/assets/images/schedule3.jpg"} fluid/>
+                                </div>
+                                <div className="slides">
+                                    <img src={"/assets/images/slide-2.jpg"} fluid/>
+                                    <div className="slide-content">
+                                        <h2>Registration Open</h2>
+                                        <p>HB Cricket Tournament Season 3 2021</p>
+                                        <a src='/'>CLICK HERE TO REGISTER</a>
+                                    </div>
+                                </div>
+                             </Slider>
+                        </Col>
+                    </Row>
+                </Container>
             </div>
+            
+            
             <div className="about-section">
                 <Container>
                     <Row>
