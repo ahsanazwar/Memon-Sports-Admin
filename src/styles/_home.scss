@@ -152,7 +152,7 @@ body{
                 &:before{
                     font-size: 16px;
                     opacity: 0.5;
-                    color: #0dcaf0;
+                    color: #fff;
                 }
             }
             &.slick-active {
@@ -228,3 +228,240 @@ body{
         }
     }
 }
+
+// Laptops large devices (desktops, 1600px and up)
+@media (min-width: 1600px) and (max-width: 1699.98px) { }
+
+// Laptops large devices (desktops, 1400px and up)
+@media (min-width: 1400px) and (max-width: 1599.98px) {}
+
+// Laptops small devices (desktops, 1200px and up)
+@media (min-width: 1200px) and (max-width: 1399.98px) {}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .home-page-banner{
+        height: em(570);
+        a{
+            font-size: em(18);
+            margin-top: em(5);
+            display: inline-block;
+        }
+    }
+    .home-slider {
+        .slide-content{
+            left: em(85);
+        }
+    }
+    .home-page-banner{ 
+        h2{
+            font-size: em(40);
+        }
+        h1{
+            font-size: em(42);
+        }
+    }
+    .my-collapsible{
+        width: 100%;
+    }
+    .nav-menu-btn{
+        width: em(20);
+        height: em(20);
+        padding: 0 !important;
+        background-color: transparent !important;
+        position: absolute;
+        right: em(5);
+        top: em(-25);
+        margin-top: 0 !important;
+        span{
+            height: 100%;
+            width: em(1);
+            background: #fff;
+            margin-right: em(2);
+            display: inline-block;
+        }
+    }
+    .my-collapsible{
+        position: relative;
+    }
+    .main-header {
+        nav {
+            flex-direction: column;
+            align-items: flex-start;
+            ul {
+                flex-direction: column;
+                li{
+                    margin-right: 0;
+                    text-align: center;
+                    width: 100%;
+                    border-bottom: 1px solid #fff;
+                    padding-bottom: 5px;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+ }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .home-slider {
+        .slide-content{
+            left: em(85);
+            width: em(300);
+            h2{
+                font-size: em(35);
+            }
+            p{
+                font-size: em(28);
+            }
+        }
+    }
+    .home-page-banner{
+        height: auto;
+        padding: em(50) 0;
+    }
+    .my-collapsible{
+        width: 100%;
+    }
+    .nav-menu-btn{
+        width: em(20);
+        height: em(20);
+        padding: 0 !important;
+        background-color: transparent !important;
+        position: absolute;
+        right: em(5);
+        top: em(-25);
+        margin-top: 0 !important;
+        span{
+            height: 100%;
+            width: em(1);
+            background: #fff;
+            margin-right: em(2);
+            display: inline-block;
+        }
+    }
+    .my-collapsible{
+        position: relative;
+    }
+    .main-header {
+        nav {
+            flex-direction: column;
+            align-items: flex-start;
+            ul {
+                flex-direction: column;
+                li{
+                    margin-right: 0;
+                    text-align: center;
+                    width: 100%;
+                    border-bottom: 1px solid #fff;
+                    padding-bottom: 5px;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+ }
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px) { }
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+    .home-slider {
+        .slick-dots{
+            bottom: 35%;
+        }
+        img{
+            height: auto;
+        }
+        .slide-content{
+            left: em(45);
+            h2{
+                font-size: em(25);
+            }
+            p{
+                font-size: em(16);
+            }
+            a{
+                padding: em(10) em(5);
+            }
+        }
+    }
+    .about-section {
+        padding: em(35) 0 em(36);
+        h2{
+            font-size: em(20);
+        }
+    }
+    .home-page-banner{ 
+        height: auto;
+        padding: em(50) em(30);
+        a{
+            margin-top: em(20);
+            font-size: em(15);
+            display: inline-block;
+        }
+        h2{
+            font-size: em(24);
+        }
+        h1{
+            font-size: em(22);
+        }
+    }
+    .main-footer{ 
+        .main-footer-wrap{
+            flex-direction: column;
+        }
+    }
+    .main-logo {
+        img{
+            width: auto;
+            height: em(35);
+        }
+    }
+    .main-header {
+        nav {
+            flex-direction: column;
+            align-items: flex-start;
+            ul {
+                flex-direction: column;
+                li{
+                    margin-right: 0;
+                    text-align: center;
+                    width: 100%;
+                    border-bottom: 1px solid #fff;
+                    padding-bottom: 5px;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+    .my-collapsible{
+        width: 100%;
+    }
+    .nav-menu-btn{
+        width: em(20);
+        height: em(20);
+        padding: 0 !important;
+        background-color: transparent !important;
+        position: absolute;
+        right: em(5);
+        top: em(-20);
+        margin-top: 0 !important;
+        span{
+            height: 100%;
+            width: em(1);
+            background: #fff;
+            margin-right: em(2);
+            display: inline-block;
+        }
+    }
+    .my-collapsible{
+        position: relative;
+    }
+ }
+

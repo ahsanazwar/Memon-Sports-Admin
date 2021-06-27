@@ -8,6 +8,11 @@ import { injectIntl } from 'react-intl';
 import { withTheme } from 'styled-components';
 import {Container,Row,Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import SlideToggle from 'react-slide-toggle';
+import {
+	faBars,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 
@@ -43,23 +48,43 @@ class Routes extends React.Component {
 											<div className="main-logo">
 												<Link to="/"><img src={"/assets/images/site-logo.png"} /></Link>
 											</div>
-											<ul>
-												<li>
-													<Link to="/">Home</Link>
-												</li>
-												<li>
-													<Link to="/">About us</Link>
-												</li>
-												<li>
-													<Link to="/">Schedule</Link>
-												</li>
-												<li>
-													<Link to="/registration">Registration</Link>
-												</li>
-												<li>
-												<Link to="/">Contact Us</Link>
-											</li>
-											</ul>
+											<SlideToggle collapsed>
+												{({ toggle, setCollapsibleElement }) => (
+													<div className="my-collapsible">
+														<button
+															className="my-collapsible__toggle nav-menu-btn"
+															onClick={toggle}
+														>
+															<FontAwesomeIcon icon={faBars} />
+														</button>
+														<div
+															className="my-collapsible__content"
+															ref={setCollapsibleElement}
+														>
+															<div className="my-collapsible__content-inner">
+															<ul>
+																<li>
+																	<Link to="/">Home</Link>
+																</li>
+																<li>
+																	<Link to="/">About us</Link>
+																</li>
+																<li>
+																	<Link to="/">Schedule</Link>
+																</li>
+																<li>
+																	<Link to="/registration">Registration</Link>
+																</li>
+																<li>
+																	<Link to="/">Contact Us</Link>
+																</li>
+															</ul>
+															</div>
+														</div>
+													</div>
+												)}
+											</SlideToggle>
+											
 										</nav>
 									</Col>
 								</Row>

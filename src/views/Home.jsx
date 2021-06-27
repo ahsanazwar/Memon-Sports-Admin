@@ -43,8 +43,6 @@ function Home() {
                     </Row>
                 </Container>
             </div>
-            
-            
             <div className="about-section">
                 <Container>
                     <Row>
@@ -79,7 +77,7 @@ function Home() {
             <div className="home-page-banner">
                 <Container>
                     <Row>
-                        <Col lg={6}>
+                        <Col lg={6} className='align-self-center'>
                             <h2>FIRST TIME IN PAKISTAN</h2>
                             <h1>VIRTUAL TEAM REGISTRATION</h1>
                             <a src='/'>CLICK HERE TO REGISTER</a>

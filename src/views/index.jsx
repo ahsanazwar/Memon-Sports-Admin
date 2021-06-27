@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import Scroller from 'react-custom-scrollbars';
 import propTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
 import { ConfigProvider, Menu } from 'antd';
