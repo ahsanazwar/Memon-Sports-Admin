@@ -18,6 +18,10 @@ function Home() {
             {/* <div className="schedule-section">
                 <img className="img-fluid cricket-img" src={"/assets/images/schedule.jpg"} />
             </div> */}
+            <div className="latest-news">
+                <div className="news-label"><span>Latest News</span></div>
+                <marquee behavior="infinite" direction="left">Cricket 2021 Cricket 2021 Cricket 2021 Cricket 2021 Cricket 2021 Cricket 2021 Cricket 2021 Cricket 2021</marquee>
+            </div>
             <div className="home-slider">
                 <Container fluid>
                     <Row>

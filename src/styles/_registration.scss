@@ -26,12 +26,12 @@
 
 .registration-form{
     padding: em(120) 0;
-    background-image: url(../assets/images/reg-bg.jpg);
+    background-image: url(../assets/images/ball-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     label{
-        font-size: em(28);
+        font-size: em(20);
         font-weight: 900;
         color: $black;
         margin: 0;
@@ -50,13 +50,14 @@
     .form-check{
         input{
             position: relative;
-            top: em(7);
+            top: em(3);
         }
     }
     .registration-form-wrapper{
         background-color: rgba(255, 255, 255, 0.8);
         padding: em(25);
         border-radius: 10px;
+        box-shadow: 1px 0px 11px 2px #ccc;
     }
     button{
         margin-top: em(10);
@@ -71,6 +72,11 @@
         padding: em(10) em(30);
         text-align: center;
         border: none;
+        transition: 0.2s;
+        &:hover{
+            background-color: #fff;
+            color: #000;
+        }
     }
 }
 
