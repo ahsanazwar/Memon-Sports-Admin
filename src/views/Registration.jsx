@@ -1,10 +1,18 @@
 import React from "react";
 import {Container,Row,Col,Form} from 'react-bootstrap';
+import {
+	faEyeSlash,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Registration extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {showSpeciality : false};
+        this.state = {
+            showSpeciality : false,
+            passwordShown : 'password',
+            confirmPasswordShown : 'password',
+        };
         this.handleChange = this.handleChange.bind(this);
     }
     handleChange(event) {    
@@ -28,7 +36,7 @@ class Registration extends React.Component {
             <form className="registration-form">
                 <Container>
                     <Row className="justify-content-center">
-                            <Col lg={6} className="registration-form-wrapper">
+                        <Col lg={6} className="registration-form-wrapper">
                                 <Row>
                                 <Col lg={6}>
                                     <Form.Control type="text" placeholder="Enter Name" />
@@ -92,7 +100,21 @@ class Registration extends React.Component {
                                         <option>Basket ball</option>
                                     </Form.Control>
                                 </Col>
-                                
+
+                                <Col lg={6}>
+                                    <div className="password-wrap">
+                                        <Form.Control type={this.state.passwordShown} placeholder="Password" />
+                                        <span onClick={() => this.setState({passwordShown: this.state.passwordShown === 'text' ? 'password' : 'text'}) }><FontAwesomeIcon icon={faEyeSlash} /></span>
+                                    </div>
+                                </Col>
+
+                                <Col lg={6}>
+                                    <div className="password-wrap">
+                                        <Form.Control type={this.state.confirmPasswordShown} placeholder="Confirm Password" />
+                                        <span onClick={() => this.setState({confirmPasswordShown: this.state.confirmPasswordShown === 'text' ? 'password' : 'text'}) }><FontAwesomeIcon icon={faEyeSlash} /></span>
+                                    </div>
+                                </Col>
+
                                 <Col lg={12}>
                                     <div className="mb-3">
                                         <div style={{display: this.state.showSpeciality ? 'block' : 'none'}}>

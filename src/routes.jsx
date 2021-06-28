@@ -26,6 +26,7 @@ const Home = moduleSelector(import('./views/Home'));
 const Registration = moduleSelector(import('./views/Registration'));
 const AdminLogin = moduleSelector(import('./views/AdminLogin'));
 const DashboardPlayerList = moduleSelector(import('./views/DashboardPlayerList'));
+const Schedule = moduleSelector(import('./views/Schedule'));
 
 
 class Routes extends React.Component {
@@ -70,7 +71,7 @@ class Routes extends React.Component {
 																	<Link to="/">About us</Link>
 																</li>
 																<li>
-																	<Link to="/">Schedule</Link>
+																	<Link to="/schedule">Schedule</Link>
 																</li>
 																<li>
 																	<Link to="/registration">Registration</Link>
@@ -83,8 +84,7 @@ class Routes extends React.Component {
 														</div>
 													</div>
 												)}
-											</SlideToggle>
-											
+											</SlideToggle>											
 										</nav>
 									</Col>
 								</Row>
@@ -94,6 +94,7 @@ class Routes extends React.Component {
 								<Route exact path="/registration" component={Registration} />
 								<Route exact path="/admin-login" component={AdminLogin} />
 								<Route exact path="/dashboard-player-list" component={DashboardPlayerList} />
+								<Route exact path="/schedule" component={Schedule} />
 							<footer className="main-footer">
 								<Container>
 									<Row>

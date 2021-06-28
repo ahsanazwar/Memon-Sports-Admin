@@ -35,8 +35,7 @@ function DashboardPlayerList() {
                                     </div>
                                     <div className="players-detail">
                                         <h3><span>Team Name:</span> Karachi Kings</h3>
-                                    </div>
-                                    
+                                    </div>                                   
                                 </li>
                                 <li>
                                     <div className="player-img">

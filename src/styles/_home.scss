@@ -229,6 +229,37 @@ body{
     }
 }
 
+.sponsor-slider{
+    padding: em(100) 0;
+    h2{
+        font-weight: 900;
+        font-size: em(35);
+        color: #051344;
+        margin: 0 0 em(35) 0;
+    }
+    img{
+        width: em(120);
+        height: em(120);
+        object-fit: scale-down;
+    }
+    .slick-prev {
+        left: -70px;
+    }
+    .slick-next {
+        right: -55px;
+    }
+    .slick-prev, .slick-next{
+        &::before{
+            color: #002196;
+            font-size: 28px;
+        }
+    }
+}
+
+.schedule-banner{
+    padding: em(80) 0;
+}
+
 // Laptops large devices (desktops, 1600px and up)
 @media (min-width: 1600px) and (max-width: 1699.98px) { }
 

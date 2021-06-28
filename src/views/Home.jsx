@@ -13,6 +13,17 @@ function Home() {
         slidesToShow: 1,
         slidesToScroll: 1
       };
+
+      const settingsSponser = {
+        autoplay:true,
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        centerMode: true,
+        centerPadding: 50,
+    };
     return(
         <>
             {/* <div className="schedule-section">
@@ -87,6 +98,87 @@ function Home() {
                         </Col>
                     </Row>
                 </Container>        
+            </div>
+            <div className="sponsor-slider">
+                <Container>
+                    <Row>
+                        <Col lg={12}>
+                            <h2 className='text-center'>Our Sponsors</h2>
+                            <Slider {...settingsSponser}>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-1.png"} fluid/>
+                                </div>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-2.png"} fluid/>
+                                </div>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-3.png"} fluid/>
+                                </div>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-4.png"} fluid/>
+                                </div>
+                                {/* <div>
+                                    <img src={"/assets/images/sp-logo-5.png"} fluid/>
+                                </div> */}
+                                <div>
+                                    <img src={"/assets/images/sp-logo-6.png"} fluid/>
+                                </div>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-7.png"} fluid/>
+                                </div>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-8.png"} fluid/>
+                                </div>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-9.png"} fluid/>
+                                </div>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-10.png"} fluid/>
+                                </div>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-11.png"} fluid/>
+                                </div>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-12.png"} fluid/>
+                                </div>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-13.png"} fluid/>
+                                </div>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-14.png"} fluid/>
+                                </div>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-15.png"} fluid/>
+                                </div>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-16.png"} fluid/>
+                                </div>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-17.png"} fluid/>
+                                </div>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-18.png"} fluid/>
+                                </div>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-20.png"} fluid/>
+                                </div>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-21.png"} fluid/>
+                                </div>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-22.png"} fluid/>
+                                </div>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-23.png"} fluid/>
+                                </div>
+                                <div>
+                                    <img src={"/assets/images/sp-logo-24.png"} fluid/>
+                                </div>
+
+                             </Slider>
+                        </Col>
+                    </Row>
+                </Container>
             </div>
         </>
     )
