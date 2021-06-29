@@ -47,7 +47,7 @@ class Routes extends React.Component {
 									<Col lg={12}>
 										<nav>
 											<div className="main-logo">
-												<Link to="/"><img src={"/assets/images/site-logo.png"} /></Link>
+												<Link to="/"><img src={"/assets/images/memon_logo.png"} /></Link>
 											</div>
 											<SlideToggle collapsed>
 												{({ toggle, setCollapsibleElement }) => (
@@ -100,7 +100,7 @@ class Routes extends React.Component {
 									<Row>
 										<Col lg={12}>
 											<div className="main-footer-wrap">
-												<div className="footer-logo"><Link to="/"><img src={"/assets/images/site-logo.png"} /></Link></div>
+												<div className="footer-logo"><Link to="/"><img src={"/assets/images/memon_logo.png"} /></Link></div>
 												<div><p className="copy-text">Copy Rights © Memon Sports</p></div>
 											</div>
 										</Col>

@@ -132,7 +132,7 @@ const Register = (props) => {
 											
 											<Col lg={6}>
 												<Field name="gender" component="select">
-													<option />
+													<option disabled selected>Gender</option>
 													<option value="male">Male</option>
 													<option value="female">Female</option>
 												</Field>
@@ -182,7 +182,7 @@ const Register = (props) => {
 											
 											<Col lg={6}>
 												<Field name="gender" component="select">
-													<option />
+													<option disabled selected>Jamaat</option>
 													<option value="Memon">Memon</option>
 													<option value="Sindhi">Sindhi</option>
 													<option value="Behari">Behari</option>
@@ -191,8 +191,7 @@ const Register = (props) => {
 											
 											<Col lg={6}>
 												<Field name="team" component="select" value={props.value} onChange={props.handleChange}>
-													<option />
-													<option disabled>Select Team</option>
+													<option disabled selected>Select Team</option>
 													{
 														props.games.map(gam=>{
 															return(
