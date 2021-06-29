@@ -30,6 +30,20 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    span{
+        color: red;
+    }
+    .fileContainer {
+        margin: 0;
+        .chooseFileButton{
+            padding: em(6) em(10);
+            font-weight: 300;
+            font-size: em(15);
+            margin: 0;
+            width: auto;
+            letter-spacing: 1px;
+        }
+    }
     label{
         font-size: em(20);
         font-weight: 900;
@@ -37,10 +51,12 @@
         margin: 0;
     }
     input,select{
-        margin-bottom: em(35);
+        margin-bottom: em(20);
         padding: em(10) em(20);
-        font-size: em(18);
+        font-size: em(16);
         border-radius: em(10);
+        border: 0;
+        width: 100%;
     }
     .form-check-inline{
         input{
@@ -107,9 +123,10 @@
 
 .password-wrap{
     position: relative;
-    span{
+    .eyeIcon{
+        color: black;
         position: absolute;
-        top: 50%;
+        top: 35%;
         right: em(15);
         transform: translateY(-50%);
         cursor: pointer;

@@ -1,14 +1,13 @@
 import React from "react";
-import {Container,Row,Col,Form} from 'react-bootstrap';
-import {
-	faEyeSlash,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {Container,Row,Col} from 'react-bootstrap';
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as userActions from '../actions/userActions';
-import ImageUploader from 'react-images-upload';
+import { Layout } from 'antd';
 // import fs from 'fs';
+import RegisterForm from '../components/RegisterForm';
+
 
 class Registration extends React.Component {
     constructor(props) {
@@ -43,6 +42,26 @@ class Registration extends React.Component {
             this.setState({showSpeciality: getSelectedGame.options || []});
         }
     }
+
+    onDrop = (e)=>{
+        console.log(e);
+        // fs.writeFile('/assets/upload/'+e.File[0].name, buffer, (err) => {
+        //     console.log(err); 
+        // })
+        this.getBase64(e[0]).then(image => {
+            console.log({image}); 
+        }); 
+        
+    }
+
+    getBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = error => reject(error);
+        });
+      }
     
     submit = (e) =>{
         e.preventDefault();
@@ -90,27 +109,96 @@ class Registration extends React.Component {
     }
   
 
-    onDrop = (e)=>{
-        console.log(e);
-        // fs.writeFile('/assets/upload/'+e.File[0].name, buffer, (err) => {
-        //     console.log(err); 
-        // })
-        this.getBase64(e[0]).then(image => {
-            console.log({image}); 
-        }); 
-        
+    
+      onSubmit = (values) => {
+		// date of birth validation here stop from here
+		this.setState({ isLoading: 'Loading...' });
     }
+      validate = (values) => {
+		const errors = {};
+		// if(!this.state.dob){
+		// 	this.setState({dobRequered: 'Date of Birth is required'})
+		// }
+		if (!values.firstName) {
+			errors.firstName = 'First name is required. ';
+		} else if (!values.firstName.match(/^[a-zA-Z]+$/)) {
+			errors.firstName = 'Numbers are not allowed';
+		}
 
-    getBase64 = (file) => {
-        return new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.readAsDataURL(file);
-          reader.onload = () => resolve(reader.result);
-          reader.onerror = error => reject(error);
-        });
-      }
+		if (!values.fatherName) {
+			errors.fatherName = 'Last Name is required. ';
+		} else if (!values.lastName.match(/^[a-zA-Z]+$/)) {
+			errors.lastName = 'Numbers are not allowed';
+		}
 
+        if (!values.surName) {
+			errors.surName = 'Last Name is required. ';
+		} else if (!values.surName.match(/^[a-zA-Z]+$/)) {
+			errors.surName = 'Numbers are not allowed';
+		}
 
+		if (!values.nicNumber) {
+			errors.nicNumber = 'NIC Number is required.';
+		}
+
+		if (!values.phNumLabel) {
+			errors.ssn = 'Phone Numver is required.';
+		} else if (values.ssn.length !== 9) {
+			errors.ssn = 'SSN length should only be 9 digits';
+		}
+
+		if (!values.phoneNumber) {
+			errors.phoneNumber = 'Phone Number is required.';
+		} else if (values.phoneNumber.length !== 10) {
+			errors.phoneNumber =
+				'Valid phone number is required. It should be upto 10 digits';
+		}
+
+		if (!values.shirtsize) {
+			errors.shirtsize = 'Shirt Size is required.';
+		} 
+
+		if (!values.license) {
+			errors.license = 'License is required.';
+		} else if (values.license.length !== 8) {
+			errors.license = 'License should only be 8 characters long';
+		} else if (!values.license.match(/^[a-zA-Z0-9]*$/)) {
+			errors.license = 'Special cherecter are not allowed';
+		}
+
+		if (!values.password) {
+			errors.password = 'Password is required.';
+		}
+
+		if (values.password) {
+			if (
+				!values.password.match(
+					/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
+				)
+			) {
+				errors.password =
+					'Password must be Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and special character is required:';
+			}
+
+			if (values.password.localeCompare(values.retype_password) !== 0) {
+				errors.retype_password = 'Password is not matched.';
+			}
+		}
+
+		if (values.ssn) {
+			if (values.ssn.localeCompare(values.reTypeSsn) !== 0) {
+				errors.reTypeSsn = 'SSN is not matched.';
+			}
+		}
+
+		if (values.email) {
+			if (values.email.localeCompare(values.reTypeEmail) !== 0) {
+				errors.reTypeEmail = 'Email is not matched.';
+			}
+		}
+
+		return errors;
+	};  
     render(){
         return(
             <>
@@ -123,129 +211,25 @@ class Registration extends React.Component {
                     </Row>
                 </Container>        
             </div>  
-            <form className="registration-form" onSubmit={this.submit}>
-                <Container>
-                    <Row className="justify-content-center">
-                        <Col lg={6} className="registration-form-wrapper">
-                                <Row>
-                                <Col lg={6}>
-                                    <Form.Control type="text" placeholder="Enter Name" />
-                                </Col>
-                                
-                                <Col lg={6}>
-                                    <Form.Control type="text" placeholder="Father Name" />
-                                </Col>
-                                
-                                <Col lg={6}>
-                                    <Form.Control type="text" placeholder="Surname Name" />
-                                </Col>
-                                
-                                <Col lg={6}>
-                                    <Form.Control type="text" placeholder="Nic Number" />
-                                </Col>
-                                
-                                <Col lg={6}>
-                                    <Form.Control type="text" placeholder="Date of Birth" />
-                                </Col>
-                                
-                                <Col lg={6}>
-                                <Form.Control as="select">
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                    </Form.Control>
-                                </Col>
-                                
-                                <Col lg={6}>
-                                    <ImageUploader
-                                        withIcon={true}
-                                        buttonText='Choose Profile Image'
-                                        onChange={this.onDrop}
-                                        imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                                        maxFileSize={5242880}
-                                        singleImage={true}
-                                    />
-                                </Col>
-                                
-                                <Col lg={6}>
-                                    <Form.Control type="text" placeholder="Shirt Size" />
-                                </Col>
-
-                                <Col lg={6}>
-                                    <div className="profile-image">
-                                        <span>Upload Player Image</span>
-                                        <Form.Control type="file" accept=".jpg,.gif,.png" placeholder="Upload Profile Pic" />
-                                    </div>
-                                </Col>
-
-                                <Col lg={6}>
-                                    <Form.Control type="number" placeholder="Enter Phone Number" />
-                                </Col>
-                                
-                                <Col lg={6}>
-                                <Form.Control as="select">
-                                        <option>Memon</option>
-                                        <option>Sindhi</option>
-                                        <option>Behari</option>
-                                    </Form.Control>
-                                </Col>
-                                
-                                <Col lg={6}>
-                                    <Form.Control as="select" value={this.state.value} onChange={this.handleChange}>
-                                        <option disabled>Select Team</option>
-                                        {
-                                            this.state.games.map(gam=>{
-                                                return(
-                                                    <option key={gam.id} value={gam.id}>{gam.type}</option>
-                                                )
-                                            })
-                                        }
-                                    </Form.Control>
-                                </Col>
-                                <Col lg={12}>
-                                    <div className="mb-3">
-                                        <div style={{display: this.state.showSpeciality.length ? 'block' : 'none'}}>
-                                            <h2>Speciality:</h2>  
-                                            {
-                                                this.state.showSpeciality.map((opt)=>{
-                                                    return(
-                                                        <Form.Check key={opt.rule_option_id} inline label={opt.option_name} name="group1" 
-                                                        value={opt.rule_option_id} type='radio' onChange={(e)=>{
-                                                            console.log(e.target.value)
-                                                            this.setState({
-                                                                selectedSpeciality: e.target.value
-                                                            });
-                                                        }} />
-                                                    );
-                                                })
-                                            }  
-                                            
-                                        </div>
-                                    </div>
-                                </Col>
-
-                                <Col lg={6}>
-                                    <div className="password-wrap">
-                                        <Form.Control type={this.state.passwordShown} placeholder="Password" />
-                                        <span onClick={() => this.setState({passwordShown: this.state.passwordShown === 'text' ? 'password' : 'text'}) }><FontAwesomeIcon icon={faEyeSlash} /></span>
-                                    </div>
-                                </Col>
-
-                                <Col lg={6}>
-                                    <div className="password-wrap">
-                                        <Form.Control type={this.state.confirmPasswordShown} placeholder="Confirm Password" />
-                                        <span onClick={() => this.setState({confirmPasswordShown: this.state.confirmPasswordShown === 'text' ? 'password' : 'text'}) }><FontAwesomeIcon icon={faEyeSlash} /></span>
-                                    </div>
-                                </Col>
-
-                               
-                                <Col lg={12}>
-                                    <button type="submit">Registration</button>
-                                </Col>
-                            </Row>
-                            </Col>
-                    </Row>
-                </Container>    
-            </form>
+            
+            
+            <RegisterForm
+                initialValues={this.state.payload}
+                validate={this.validate}
+                onSubmit={this.onSubmit}
+                onDateChange={this.onDateChange}
+                onFileUpload={this.onFileUpload}
+                isLoading={this.state.isLoading}
+                dobRequered={this.state.dobRequered}
+                userAge={this.state.calculateAge}
+                emailTaken={this.state.errorMessage}
+                games={this.state.games}
+                value={this.state.value}
+                handleChange = {this.handleChange}
+                passwordShown = {this.state.passwordShown}
+                confirmPasswordShown = {this.state.confirmPasswordShown}
+                onDrop = {this.onDrop}
+            />
             </>
         );
     }
