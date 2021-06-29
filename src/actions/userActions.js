@@ -1,6 +1,34 @@
 import {
 	signupApi,
+	getAllGamesApi
 } from '../apis/usersApis';
+
+export const getAllGames = () => {
+	return (dispatch) => {
+		const GAMES = {
+			pending: true,
+			failed: false,
+			data: {},
+		};
+		dispatch({ type: 'GAMES', data: GAMES });
+		return getAllGamesApi()
+			.then((todos) => {
+				GAMES.data = todos.data.data;
+				GAMES.pending = false;
+				GAMES.failed = false;
+				dispatch({ type: 'GAMES', data: GAMES });
+				return GAMES;
+			})
+			.catch((error) => {
+				GAMES.data = [];
+				GAMES.error = error;
+				GAMES.pending = false;
+				GAMES.failed = true;
+				dispatch({ type: 'GAMES', data: GAMES });
+				return GAMES;
+			});
+	};
+};
 
 export const signup = (data) => {
 	return (dispatch) => {

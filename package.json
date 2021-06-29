@@ -1,5 +1,5 @@
 {
-	"name": "sopublic",
+	"name": "memonsports",
 	"version": "2.0.0",
 	"description": "So Public",
 	"engines": {
@@ -36,7 +36,6 @@
 	"dependencies": {
 		"@babel/cli": "7.8.4",
 		"@babel/core": "7.9.0",
-		"@babel/node": "7.8.7",
 		"@babel/plugin-proposal-class-properties": "7.8.3",
 		"@babel/plugin-transform-block-scoping": "7.8.3",
 		"@babel/preset-env": "7.9.5",
@@ -79,6 +78,7 @@
 		"file-loader": "6.0.0",
 		"final-form": "4.19.1",
 		"firebase": "8.1.2",
+		"fs": "0.0.1-security",
 		"history": "4.10.1",
 		"html-webpack-plugin": "4.2.0",
 		"husky": "4.2.5",
@@ -113,6 +113,7 @@
 		"react-google-maps": "9.4.5",
 		"react-hot-loader": "4.12.20",
 		"react-image-file-resizer": "0.3.8",
+		"react-images-upload": "1.2.8",
 		"react-intl": "4.5.0",
 		"react-paginated-list": "1.1.5",
 		"react-pure-lifecycle": "3.0.0",

@@ -1,5 +1,5 @@
 const basicRoute =
-	process.env.serviceURL || 'https://services.osc-fr1.scalingo.io/';
+	process.env.serviceURL || 'http://localhost:3000/';
 import axios from 'axios';
 
 const instance = axios.create({
