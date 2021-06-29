@@ -212,20 +212,6 @@
 		"webpack-dev-middleware": "3.7.2",
 		"webpack-hot-middleware": "2.25.0"
 	},
-	"private": true,
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
-	},
-	"lint-staged": {
-		"*.{js,jsx,css,json,md,scss}": [
-			"prettier --write",
-			"git add"
-		],
-		"*.{js,jsx}": [
-			"eslint --fix",
-			"git add"
-		]
-	}
+	"private": true
+	
 }
