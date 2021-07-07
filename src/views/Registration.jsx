@@ -1,10 +1,11 @@
 import React from "react";
-import {Container,Row,Col} from 'react-bootstrap';
+import {Row,Col} from 'react-bootstrap';
+import {notification, Modal, Input, Button} from 'antd'; 
+import Header from '../components/Header';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as userActions from '../actions/userActions';
-import { Layout } from 'antd';
 // import fs from 'fs';
 import RegisterForm from '../components/RegisterForm';
 
@@ -13,43 +14,109 @@ class Registration extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showSpeciality : [],
+            codeValidationModel: false, 
             passwordShown : 'password',
-            confirmPasswordShown : 'password',
             games : [],
-            selectedGames : {},
-            selectedSpeciality: null,
+            btnLoading:false, 
+            profilePic: null,
+            passVal: "password",
+            verifyBtnLoading: false,
+            code: '', 
+            customError : {
+                dob: {
+                    error: null,
+                    value: null
+                },
+
+                game: {
+                    error: null,
+                    value: null
+                },
+
+                jamaatName : {
+                    error: null,
+                    value: null
+                },
+
+                gender: {
+                    error: null,
+                    value: 'male'
+                },
+
+                kitSize: {
+                    error: null,
+                    value: 'S'
+                }
+            }
         };
     }
+
+    
+
+
     componentDidMount(){
-      this.props.actions.getAllGames().then(response=>{
-          this.setState({
-              games: response.data || []
-          });
-      });   
+        // this.openNotification("success", "Success", "Player is Created");
+        this.props.actions.getAllGames().then(response=>{
+            this.setState({
+                games: response.data || []
+            });
+        });   
     }
 
-    handleChange = (e) => {    
-        console.log(e.target.value); 
-        const getSelectedGame = this.state.games.find(gam => gam.id == e.target.value); 
+    
 
-        this.setState({
-            selectedGames: getSelectedGame,
-            selectedSpeciality: null
+    openNotification = (type, title, description) => {
+        notification[type]({
+            placement: 'topRight',
+            bottom: 50,
+            message: title,
+            description: description
         });
-
-        if(getSelectedGame){
-            this.setState({showSpeciality: getSelectedGame.options || []});
-        }
     }
+    
+    selectedSpecialityOnSelect = (e)=>{
+        const customError = {...this.state.customError};
+        const game = customError.game.value;  
+        if(game){
+            game.ruleOptionId = e.target.value; 
+        }
+        this.selectObject(game, 'game');
+        // console.log(e.target.value, game);
+        
+    }
+
+    handleChange = (value) => {    
+        // console.log(value); 
+        // const customError = {...this.state.customError};
+        const getSelectedGame = this.state.games.find(gam => gam.id == value); 
+
+        if(getSelectedGame) {
+            const game = {
+                id: getSelectedGame.id,
+                ruleOptionId: null,
+                ruleId: getSelectedGame.ruleId,
+                type: getSelectedGame.type,
+                options: getSelectedGame.options.length ? getSelectedGame.options : undefined  
+            };
+    
+            this.selectObject(game, 'game');
+            // console.log(this.state.customError); 
+        }
+       
+        
+    }
+
+
 
     onDrop = (e)=>{
-        console.log(e);
+        // console.log(e);
         // fs.writeFile('/assets/upload/'+e.File[0].name, buffer, (err) => {
-        //     console.log(err); 
+        //     // console.log(err); 
         // })
         this.getBase64(e[0]).then(image => {
-            console.log({image}); 
+            this.setState({
+                profilePic: image
+            });
         }); 
         
     }
@@ -61,110 +128,177 @@ class Registration extends React.Component {
           reader.onload = () => resolve(reader.result);
           reader.onerror = error => reject(error);
         });
-      }
+    }
     
-    submit = (e) =>{
-        e.preventDefault();
-
-        if(!Object.keys(this.state.selectedGames).length) {
-            console.log("No Games Selected"); 
-            return false;   
+    selectObject = (value, name) => {
+        const customError = {...this.state.customError};
+        if(customError[name]) {
+           customError[name].value = value; 
+           customError[name].error = null; 
         }
 
-        if(this.state.selectedGames.options.length && !(this.state.selectedSpeciality)) {
-            console.log("Please select you speciality"); 
-            return false;
+        this.setState({customError});
+    }
+
+    selectObjectErr = (err, name) => {
+        const customError = {...this.state.customError};
+        if(customError[name]) {
+           customError[name].error = err; 
         }
 
-        const selectedGames = [{
-            id: this.state.selectedGames.id,
-            ruleOptionId: this.state.selectedSpeciality,
-            ruleId: this.state.selectedGames.ruleId,
-            type: this.state.selectedGames.type
-        }];
+        this.setState({customError});
+    }
 
+    cancelImage = (e) =>{
+        this.setState({
+            profilePic:null
+        });
+    }
 
-        // final object
-        /*{
-    "name":"hello",
-    "dob": "19/06/1994",
-    "regNumber":"asdasd-2577",
-    "roleId": "02ab1cb3-bcff-4c8a-9e80-418f7085ffc1",
-    "gender": "male",
-    "fatherName": "Attq ur rehman",
-    "email": "daniyal@gmail.com",
-    "phone": "+923117767859",
-    "surName": "Rehman",
-    "jamaatName": "Batwa waly",
-    "games":[{
-        "id":"379dbac0-1bbf-4a60-8dee-39afff48e672",
-        "ruleOptionId": "618c07db-54c4-47e2-84ae-c8b1c94cbdab",
-        "ruleId": "9377e192-1d8a-48bf-b016-a53b18896869",
-        "type": "Cricket"
-    }],
-    "kitSize": "S",
-    "password": "Charlieboy350"
-}*/ 
+    
+    
+    verifyCode = (e) => {
+        this.setState({
+            verifyBtnLoading:true
+        });
+        const code = this.state.code; 
+        if(code.length == 4) {
+            const params = {
+                phone: this.state.postValue.phone,
+                code 
+            }
+           this.props.actions.codeVerification(params).then(res=>{
+                if(res.data.meta) {
+                    this.openNotification("success", "Success", "Player is Created");
+                } else {
+                    this.openNotification("error", "Error", "Player is Created but phone verification failed");
+                }
+                this.setState({
+                    codeValidationModel: false,
+                    verifyBtnLoading: false
+                });
+           }); 
+        }
+
+      
+    }
+
+    submit = (value) => {
         
+        this.setState({
+            btnLoading: true
+        });
+        // alert(); 
+       let check = false;
+       const customError = {...this.state.customError};
+       // console.log(value, {customError}); 
+
+       Object.keys(customError).map((key)=>{
+            if(customError[key].value == null) {
+                 this.selectObjectErr('Field is Required', key);
+                 check = true; 
+            }
+            if(key == 'game') {
+                // console.log("GAME"); 
+                if(customError[key].value && customError[key].value.options && customError[key].value.ruleOptionId == null) {
+                    this.selectObjectErr('Select Game speciality is Required', key);
+                    check = true; 
+                }
+            }
+        });
+
+       
+       if(check) {
+            this.setState({
+                btnLoading: false
+            });
+            return true; 
+        }
+        // console.log({value}, this.state.customError); 
+
+        Object.keys(this.state.customError).map((key)=>{
+            value[key] = this.state.customError[key].value;
+        }); 
+
+        value.name = value.name.trim();
+        value.surName = value.surName.trim();
+        value.fatherName = value.fatherName.trim();
+        delete value.game.options
+        value.games = [value.game]; 
+        delete value.game;
+        value.profileImage = this.state.profilePic || undefined; 
+        
+        // console.log({value});
+
+        this.setState({
+            postValue: value
+        });
+
+        this.props.actions.registerPlayer({...value, "roleId": "02ab1cb3-bcff-4c8a-9e80-418f7085ffc1"}).then((res)=>{
+            // console.log(res);
+            if(res.data.meta) {
+                this.setState({
+                    codeValidationModel: true
+                }); 
+            }
+
+            this.setState({
+                btnLoading: false
+            });
+        });         
     }
   
 
     
-      onSubmit = (values) => {
-		// date of birth validation here stop from here
-		this.setState({ isLoading: 'Loading...' });
-    }
+      
       validate = (values) => {
 		const errors = {};
-		// if(!this.state.dob){
-		// 	this.setState({dobRequered: 'Date of Birth is required'})
-		// }
-		if (!values.firstName) {
-			errors.firstName = 'First name is required. ';
-		} else if (!values.firstName.match(/^[a-zA-Z]+$/)) {
-			errors.firstName = 'Numbers are not allowed';
+
+		if (!values.name) {
+			errors.name = 'Name is required. ';
+		} else if (!values.name.match(/^[a-zA-Z\s]*$/)) {
+			errors.name = 'Numbers and Symbols are not allowed';
 		}
 
+
 		if (!values.fatherName) {
-			errors.fatherName = 'Last Name is required. ';
-		} else if (!values.lastName.match(/^[a-zA-Z]+$/)) {
-			errors.lastName = 'Numbers are not allowed';
+			errors.fatherName = 'Father Name is required. ';
+		} else if (!values.fatherName.match(/^[a-zA-Z\s]*$/)) {
+			errors.lastName = 'Numbers and Symbols are not allowed';
 		}
 
         if (!values.surName) {
-			errors.surName = 'Last Name is required. ';
-		} else if (!values.surName.match(/^[a-zA-Z]+$/)) {
-			errors.surName = 'Numbers are not allowed';
+			errors.surName = 'Sur Name is required. ';
+		} else if (!values.surName.match(/^[a-zA-Z\s]*$/)) {
+			errors.surName = 'Numbers and Symbols are not allowed';
 		}
 
-		if (!values.nicNumber) {
+		if (!values.regNumber) {
 			errors.nicNumber = 'NIC Number is required.';
 		}
+        else {
+            if (values.regNumber.length != 13) {
+                errors.regNumber = 'NIC Number Should contain 13 digits only';
+            }
+        }
 
-		if (!values.phNumLabel) {
-			errors.ssn = 'Phone Numver is required.';
-		} else if (values.ssn.length !== 9) {
-			errors.ssn = 'SSN length should only be 9 digits';
-		}
+		 
 
-		if (!values.phoneNumber) {
-			errors.phoneNumber = 'Phone Number is required.';
-		} else if (values.phoneNumber.length !== 10) {
-			errors.phoneNumber =
-				'Valid phone number is required. It should be upto 10 digits';
-		}
+		if (!values.phone) {
+			errors.phone = 'Phone Number is required.';
+		} else if (values.phone.length != 13) {
+			errors.phone =
+				'Valid phone number is required. It should be upto 13 digits and Phone Number Should look like this +92335XXXXXXX';
+		} else {
+            if(values.phone[0] == '0') {
+                errors.phone =
+                    'Phone Number Should look like this +92335XXXXXXX';
+            }
+        }
+        
+        
 
-		if (!values.shirtsize) {
-			errors.shirtsize = 'Shirt Size is required.';
-		} 
-
-		if (!values.license) {
-			errors.license = 'License is required.';
-		} else if (values.license.length !== 8) {
-			errors.license = 'License should only be 8 characters long';
-		} else if (!values.license.match(/^[a-zA-Z0-9]*$/)) {
-			errors.license = 'Special cherecter are not allowed';
-		}
+	 
 
 		if (!values.password) {
 			errors.password = 'Password is required.';
@@ -180,56 +314,74 @@ class Registration extends React.Component {
 					'Password must be Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and special character is required:';
 			}
 
-			if (values.password.localeCompare(values.retype_password) !== 0) {
-				errors.retype_password = 'Password is not matched.';
-			}
+			
 		}
 
-		if (values.ssn) {
-			if (values.ssn.localeCompare(values.reTypeSsn) !== 0) {
-				errors.reTypeSsn = 'SSN is not matched.';
-			}
-		}
-
-		if (values.email) {
-			if (values.email.localeCompare(values.reTypeEmail) !== 0) {
-				errors.reTypeEmail = 'Email is not matched.';
-			}
+		if (!values.email) {
+			errors.email = 'Email is required.';
 		}
 
 		return errors;
-	};  
+	  };  
     render(){
         return(
             <>
+            <Header />
             <div className="inner-page-banner">
-                <Container>
-                    <Row>
-                        <Col lg={12}>
-                        <h1>Registration</h1>
+                <div className="width">
+                    <Row className=" flex">
+                        <Col lg={5} className="inner-page-banner-heading">
+                            <h1>Player Registration Process.</h1>
+                            <p>Form Related Details.</p>
+                        </Col>
+                        <Col lg={7} >
+                            <RegisterForm
+                                validate={this.validate}
+                                onSubmit={this.submit}
+                                isLoading={this.state.isLoading}
+                                games={this.state.games}
+                                handleChange = {this.handleChange}
+                                passwordShown = {this.state.passwordShown}
+                                onDrop = {this.onDrop}
+                                selectedSpeciality = {this.selectedSpecialityOnSelect}
+                                selectObject = {this.selectObject}
+                                profilePic = {this.state.profilePic}
+                                cancelImage = {this.cancelImage}
+                                eye={ (e) => this.setState({passVal: this.state.passVal === 'text' ? 'password' : 'text'}) }
+                                passVal= {this.state.passVal}
+                                customError = {this.state.customError}
+                                btnLoading = {this.state.btnLoading}
+                            />
                         </Col>
                     </Row>
-                </Container>        
+                </div> 
+
+                <Modal title="Code Validation" visible={this.state.codeValidationModel} footer={null} closable={false} >
+                    <div className="codeVerification"> 
+                        <p>Please Check Your Phone for the Code. </p>   
+                        <Input onChange={(e)=>{
+                            if(e.target.value.length > 4){
+                                return false;
+                            }
+                            this.setState({
+                                code: e.target.value
+                            });
+                           
+                        }} value={this.state.code} placeholder="Verfication Code" />
+                        <div className="codeVerificationBtns flex justify-content-end align-items-center m-t-15">
+                            <Button className="m-r-15" type="secondary" onClick={(e)=>{
+                                console.log("Resend API");
+                            }}>Re-Send</Button>
+                            <Button  onClick={this.verifyCode} disabled={!(this.state.code.length==4)} loading={this.state.verifyBtnLoading} type="primary">Verify</Button>
+                        </div>
+                    </div>
+
+                </Modal>
+                    
             </div>  
             
             
-            <RegisterForm
-                initialValues={this.state.payload}
-                validate={this.validate}
-                onSubmit={this.onSubmit}
-                onDateChange={this.onDateChange}
-                onFileUpload={this.onFileUpload}
-                isLoading={this.state.isLoading}
-                dobRequered={this.state.dobRequered}
-                userAge={this.state.calculateAge}
-                emailTaken={this.state.errorMessage}
-                games={this.state.games}
-                value={this.state.value}
-                handleChange = {this.handleChange}
-                passwordShown = {this.state.passwordShown}
-                confirmPasswordShown = {this.state.confirmPasswordShown}
-                onDrop = {this.onDrop}
-            />
+            
             </>
         );
     }
@@ -237,7 +389,7 @@ class Registration extends React.Component {
 
 
 
-const mapStateToProps = () => {
+const mapStateToProps = (state) => {
 	return {};
 };
 

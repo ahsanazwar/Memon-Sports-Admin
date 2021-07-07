@@ -1,5 +1,6 @@
 import React from "react";
 import {Container,Row,Col} from 'react-bootstrap';
+import Header from '../components/Header';
 
 class Registration extends React.Component {
     constructor(props) {
@@ -9,6 +10,7 @@ class Registration extends React.Component {
     render(){
         return(
             <>
+                <Header />
                 <div className="inner-page-banner">
                     <Container>
                         <Row>

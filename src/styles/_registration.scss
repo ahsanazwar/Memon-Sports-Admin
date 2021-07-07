@@ -1,81 +1,41 @@
 .inner-page-banner{
-    height: em(300);
-    background-image: url(../assets/images/stadium-banner.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    min-height: 100%;
+    background: url(../assets/images/stadium-banner.jpg) fixed;
     display: flex;
     align-items: flex-end;
     position: relative;
-    &:before{
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(49, 131, 255, 0.2);
-    }
-    h1{
-        text-transform: uppercase;
-        letter-spacing: em(3);
-        color: #fff;
-        font-size: em(48);
+    
+    .inner-page-banner-heading {
+        background: rgba(0,0,0,0.43);
+        padding:25px 15px;
+        h1{
+            text-transform: uppercase;
+            color: #fff;
+            font-size: 25px;
+
+        }
+        p {
+            color:#eee; 
+            font-size:16px;
+        }
     }
 }
 
+.ant-popover {
+    width:300px; 
+}
+
 .registration-form{
-    padding: em(120) 0;
-    background-image: url(../assets/images/ball-bg.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    span{
-        color: red;
-    }
-    .fileContainer {
-        margin: 0;
-        .chooseFileButton{
-            padding: em(6) em(10);
-            font-weight: 300;
-            font-size: em(15);
-            margin: 0;
-            width: auto;
-            letter-spacing: 1px;
+
+    .ant-btn-loading-icon{
+        margin-right: 10px;
+        vertical-align: text-bottom;
+        span.anticon {
+            padding-right: 0px;
         }
     }
-    label{
-        font-size: em(20);
-        font-weight: 900;
-        color: $black;
-        margin: 0;
-    }
-    input,select{
-        margin-bottom: em(20);
-        padding: em(10) em(20);
-        font-size: em(16);
-        border-radius: em(10);
-        border: 0;
-        width: 100%;
-    }
-    .form-check-inline{
-        input{
-            margin-bottom: 0;
-        }
-    }
-    .form-check{
-        input{
-            position: relative;
-            top: em(3);
-        }
-    }
-    .registration-form-wrapper{
-        background-color: rgba(255, 255, 255, 0.8);
-        padding: em(25);
-        border-radius: 10px;
-        box-shadow: 1px 0px 11px 2px #ccc;
-    }
-    button{
+
+    button.ant-btn.register {
         margin-top: em(10);
         font-size: em(20);
         font-weight: 900;
@@ -91,9 +51,187 @@
         transition: 0.2s;
         &:hover{
             background-color: #fff;
-            color: #000;
+            color: #4e99b6;
+        }
+        &.ant-btn-loading{ 
+            background: #888;
+            opacity:0.8;
+        }
+        height: auto;
+        vertical-align: middle;
+    }
+
+    position:relative; 
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+    -moz-appearance: textfield;
+    }
+    
+    
+    .hasError {
+        border: 1px solid rgb(201, 37, 37);
+    }
+
+    h5 {
+        position: relative;
+        font-size: 13px;
+        span{
+            color: rgb(201, 37, 37);
+            position: absolute;
+            right:5px;
+            font-size:15px;
         }
     }
+
+    .fileContainer {
+        width: 100px;
+        height:100px; 
+        border-radius: 100px;
+        margin: 0 auto;
+        padding:0px;
+         p {margin:0px;padding:0px;}
+        .chooseFileButton{
+            padding:0px;
+            border-radius: 100px;
+            font-weight: 300;
+            font-size: em(55);
+            text-align: center;
+            margin: 0;
+            width: 100%;
+            height:100%;
+            .uploadedImage {
+                width: 100px;
+                height:100px;
+                overflow: hidden;
+                border-radius: 100px;
+            }
+            .imageContainer {
+                z-index:9;
+                .imageCross {
+                    background:white;
+                    width:20px;
+                    line-height: 20px;
+                    border-radius:20px;
+                    height:20px;
+                    display:inline-block;
+                    text-align: center;
+                    font-size:20px;
+                    right:0px;
+                    top:0px;
+                    svg {
+                        color:red;
+                    }
+                }
+            }
+        }
+    }
+    label{
+        font-size: em(20);
+        font-weight: 900;
+        color: $black;
+        margin: 0;
+    }
+    input ,select{
+        outline: none;
+        margin-bottom: em(20);
+        padding: em(10) em(20);
+        font-size: em(16);
+        border-radius: em(10);
+        border: 1px solid #ccc;
+        width: 100%;
+    }
+
+    .customDatePicker {
+        outline: none;
+        margin-bottom: em(20);
+        padding: em(10) em(20);
+        font-size: em(16);
+        border-radius: em(10);
+        border: 1px solid #ccc;
+        width: 100%;
+        input {
+            margin:0px;
+        }
+        .anticon  {
+            vertical-align:top;
+            font-size:20px;
+        }
+    }
+
+
+    .customDropDown {
+        outline: none;
+        font-size: em(16);
+        border-radius: em(10);
+        text-transform: capitalize;
+
+       
+
+       .ant-select-selector {
+           border-radius: em(10) !important; 
+           height:41px !important; 
+           input {height:41px Important;}
+           border:none !important; outline:none;
+            box-shadow: none !important;
+            .ant-select-selection-item {
+                line-height:41px;
+            }
+       }
+    }
+
+    .form-check-inline{
+        input{
+            margin-bottom: 0;
+        }
+    }
+    .form-check{
+        input{
+            position: relative;
+            top: em(3);
+        }
+    }
+    .registration-form-wrapper{
+        background-color: #eee;
+        padding: em(25);
+        border-radius: 0px;
+        
+.ant-radio-wrapper {
+
+  display:block;
+
+  span {
+      font-size:14px;
+      font-weight:normal; 
+      vertical-align:middle;
+  }   
+}
+    }
+    // button.register{
+        // margin-top: em(10);
+        // font-size: em(20);
+        // font-weight: 900;
+        // text-transform: uppercase;
+        // letter-spacing: 5px;
+        // color: #fff;
+        // background: #4e99b6;
+        // border-radius: 45px;
+        // width: 100%;
+        // padding: em(10) em(30);
+        // text-align: center;
+        // border: none;
+        // transition: 0.2s;
+        // &:hover{
+        //     background-color: #fff;
+        //     color: #000;
+        // }
+    // }
 }
 
 .profile-image{
@@ -104,6 +242,7 @@
     border-radius: em(10);
     border: 1px solid #ced4da;
     position: relative;
+    
     span{
         position: absolute;
         left:em(15);
@@ -124,11 +263,29 @@
 .password-wrap{
     position: relative;
     .eyeIcon{
+        display:inline-block; 
+        width:15px;
+        user-select: none;
+        color:#ccc; 
         color: black;
         position: absolute;
-        top: 35%;
+        top: 10px;
         right: em(15);
-        transform: translateY(-50%);
         cursor: pointer;
     }
 }
+
+.ant-select-item-option-content {
+            text-transform: capitalize;
+       }
+
+       button {
+           line-height:normal !important;
+        .ant-btn-loading-icon{
+            margin-right: 10px  !important;
+            vertical-align: text-bottom;
+            span.anticon {
+                padding-right: 0px;
+            }
+        }
+    }

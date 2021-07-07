@@ -1,12 +1,11 @@
 .contact-form {
 	padding: 80px 0;
-	span {
-		color: #f00;
-		font-weight: 900;
-		font-size: 15px;
-		margin-bottom: 15px;
-		display: block;
-	}
+	// span {
+	// 	font-weight: 900;
+	// 	font-size: 15px;
+	// 	margin-bottom: 15px;
+	// 	display: block;
+	// }
 	.ant-picker {
 		border: none;
 		display: block;
@@ -52,7 +51,7 @@
 		}
 	}
 	h2 {
-		text-align: center;
+		text-align: left;
 		font-size: 38px;
 		margin-bottom: 10px;
 		color: #111e6c;
@@ -88,17 +87,29 @@
 		padding: 15px 30px;
 		margin: 0 0 20px;
 	}
-	button {
+	button:not([role=switch]) {
 		padding: 10px 30px;
 		color: #fff;
 		background-color: #111e6c;
 		border: none;
 		border-radius: 5px;
 		cursor: pointer;
+		height:auto; 
 		transition: 0.5s ease-in-out all;
 		&:hover {
 			opacity: 0.7;
 		}
+	}
+
+	button[role=switch] {
+		background: #eee;
+		span {line-height:normal; margin:0px; font-size:12px; color:#888;
+			display:block; width:70px; text-align:right; padding:0px 10px}
+		&.ant-switch.ant-switch-checked {
+			background: #111e6c !important;
+			span {text-align:left; color:#fff;}
+		}
+		
 	}
 	.forget-label {
 		display: flex;
@@ -134,7 +145,7 @@
 	label {
 		color: #111e6c;
 		font-size: 18px;
-		margin-bottom: 15px;
+		margin-bottom: 0px;
 		font-weight: 400;
 	}
 	select {
@@ -153,7 +164,7 @@
 }
 
 .register-form {
-	background-image: url(../../public/images/signup-bg.jpeg);
+	background: url(../assets/images/stadium-banner.jpg) fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;

@@ -28,18 +28,22 @@ class BaseView extends PureComponent {
 				locale="en"
 			>
 				<ConfigProvider locale="en">
-					<div className="width height wrapper relative">
-							{/*<div className="absolute top-10 right-15 z-index-1">
-								<Dropdown.Button
-									icon={<GlobalOutlined />}
-									onClick={this.handleButtonClick}
-									overlay={this.menu}
-								>
-									{this.state.selectedLanguage.title}
-								</Dropdown.Button>
-							</div>*/}
+					<div className="width height wrapper relative"> 
 							{this.props.children}
 					</div>
+					<footer className="main-footer">
+						footer
+						{/* <Container>
+							<Row>
+								<Col lg={12}>
+									<div className="main-footer-wrap">
+										<div className="footer-logo"><Link to="/"><img src={"/assets/images/site-logo.png"} /></Link></div>
+										<div><p className="copy-text">Copy Rights © Memon Sports</p></div>
+									</div>
+								</Col>
+							</Row>
+						</Container>   */}
+					</footer>
 				</ConfigProvider>
 			</IntlProvider>
 		);

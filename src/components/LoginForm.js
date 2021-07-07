@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Layout } from 'antd';
+import { Row, Col, Layout, Switch, Button } from 'antd';
 import { withTheme } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Form, Field } from 'react-final-form';
@@ -11,14 +11,17 @@ const LoginForm = (props) => {
 			<div className="contact-form register-form">
 				<div className="">
 					<Row>
-						<Col md={12} xs={24}>
+						<Col md={12} xs={24}> 
 							<Form
 								onSubmit={props.onSubmit}
 								validate={props.validate}
 								render={({ handleSubmit }) => (
-									<form onSubmit={handleSubmit} id="login-form">
-										<h2>Login to access your Account</h2>
-										<Field
+									<form onSubmit={handleSubmit} id="login-form" className="text-left">
+										<h2>{props.title}</h2>
+										<span>Login by <Switch className="m-l-5" checkedChildren="Email" unCheckedChildren="Phone" defaultChecked onChange={props.loginTypeHandler}/></span>
+										
+										{
+											props.loginType ? <Field
 											name="email"
 											component="input"
 											placeholder="Email Address*"
@@ -27,7 +30,7 @@ const LoginForm = (props) => {
 												<div>
 													<label>Email</label>
 													<input
-														type="text"
+														type="email"
 														placeholder="Enter Email Address*"
 														{...input}
 													/>
@@ -36,7 +39,29 @@ const LoginForm = (props) => {
 													)}
 												</div>
 											)}
+										</Field> : <Field
+											name="phone"
+											component="input"
+											placeholder="Phone Number *"
+										>
+											{({ input, meta }) => (
+												<div>
+													<label>Phone</label>
+													<input
+														type="text"
+														placeholder="Enter Phone Number *"
+														{...input}
+													/>
+													{meta.touched && meta.error && (
+														<span>{meta.error}</span>
+													)}
+												</div>
+											)}
 										</Field>
+										}
+										
+
+										
 
 										<Field
 											name="password"
@@ -58,13 +83,13 @@ const LoginForm = (props) => {
 											)}
 										</Field>
 										<p className="forget-label">
-											<Link to="/register">Not Registered Yet?</Link>
-											<Link to="/forget-password-email">Forgot Password?</Link>
+											{props.title != 'admin' && <Link to="/registration">Not Registered Yet?</Link>}
+											{/* <Link to="/forget-password-email">Forgot Password?</Link> */}
 										</p>
 										<span>{props.loginError}</span>
-										<button className="thm-btn bg-cl-1" type="submit">
+										<Button loading={props.apiLoading} htmlType="submit">
 											Login
-										</button>
+										</Button>
 									</form>
 								)}
 							/>

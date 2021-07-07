@@ -2,17 +2,15 @@ import React, { Suspense } from 'react';
 import {
 	Switch,
 	Route,
-	Link
+	Link,
+	Redirect
   } from "react-router-dom";
 import { injectIntl } from 'react-intl';
 import { withTheme } from 'styled-components';
-import {Container,Row,Col} from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import SlideToggle from 'react-slide-toggle';
-import {
-	faBars,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+
+import { withCookies } from 'react-cookie';
+
 // import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 
@@ -25,8 +23,15 @@ const moduleSelector = (importedModule) => {
 const Home = moduleSelector(import('./views/Home'));
 const Registration = moduleSelector(import('./views/Registration'));
 const AdminLogin = moduleSelector(import('./views/AdminLogin'));
-const DashboardPlayerList = moduleSelector(import('./views/DashboardPlayerList'));
+const Dashboard = moduleSelector(import('./views/Dashboard'));
 const Schedule = moduleSelector(import('./views/Schedule'));
+const PlayersList = moduleSelector(import('./views/PlayersList'));
+
+const NoMatchPage = () => {
+	return (
+	  <h3>404 - Not found</h3>
+	);
+};
 
 
 class Routes extends React.Component {
@@ -38,77 +43,44 @@ class Routes extends React.Component {
 		return (
 			<Suspense fallback={<div>loading...</div>}>
 				<Route>
-					<Switch>
+					
 						
 						<BaseComponent>
-							<header className="main-header">  
-							<Container>
-								<Row>
-									<Col lg={12}>
-										<nav>
-											<div className="main-logo">
-												<Link to="/"><img src={"/assets/images/site-logo.png"} /></Link>
-											</div>
-											<SlideToggle collapsed>
-												{({ toggle, setCollapsibleElement }) => (
-													<div className="my-collapsible">
-														<button
-															className="my-collapsible__toggle nav-menu-btn"
-															onClick={toggle}
-														>
-															<FontAwesomeIcon icon={faBars} />
-														</button>
-														<div
-															className="my-collapsible__content"
-															ref={setCollapsibleElement}
-														>
-															<div className="my-collapsible__content-inner">
-															<ul>
-																<li>
-																	<Link to="/">Home</Link>
-																</li>
-																<li>
-																	<Link to="/">About us</Link>
-																</li>
-																<li>
-																	<Link to="/schedule">Schedule</Link>
-																</li>
-																<li>
-																	<Link to="/registration">Registration</Link>
-																</li>
-																<li>
-																	<Link to="/">Contact Us</Link>
-																</li>
-															</ul>
-															</div>
-														</div>
-													</div>
-												)}
-											</SlideToggle>											
-										</nav>
-									</Col>
-								</Row>
-							</Container>
-						</header>
-								<Route exact path="/" component={Home} />
-								<Route exact path="/registration" component={Registration} />
-								<Route exact path="/admin-login" component={AdminLogin} />
-								<Route exact path="/dashboard-player-list" component={DashboardPlayerList} />
-								<Route exact path="/schedule" component={Schedule} />
-							<footer className="main-footer">
-								<Container>
-									<Row>
-										<Col lg={12}>
-											<div className="main-footer-wrap">
-												<div className="footer-logo"><Link to="/"><img src={"/assets/images/site-logo.png"} /></Link></div>
-												<div><p className="copy-text">Copy Rights © Memon Sports</p></div>
-											</div>
-										</Col>
-									</Row>
-								</Container>  
-							</footer>
+							{this.props.cookies.get('user') ? <>
+								<Switch>
+									<Route exact path="/" component={Home} />
+									<Route exact path="/schedule" component={Schedule} />
+									
+									<Route exact path="/dashboard">
+										<Dashboard>
+											<PlayersList />
+										</Dashboard>
+									</Route>
+									<Route exact path="/dashboard/players">
+										<Dashboard>
+											<PlayersList />
+										</Dashboard>
+									</Route>
+									<Route path="*" component={NoMatchPage} />
+								</Switch>
+							</> :
+							<>
+								<Switch>
+									<Route exact path="/" component={Home} />
+									<Route exact path="/schedule" component={Schedule} />
+									<Route exact path="/adminlogin" component={AdminLogin} />
+									<Route exact path="/registration" component={Registration} />
+									<Route path="*" component={()=><>Not Found</>} />
+								</Switch>
+							</>}
+
+								
+								
+							
 						</BaseComponent>
-					</Switch>	
+						
+						
+					
 				</Route>
 			</Suspense>
 		);
@@ -128,4 +100,4 @@ class Routes extends React.Component {
 // 	};
 // };
 
-export default Routes;
+export default withCookies(Routes);

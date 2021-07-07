@@ -1,6 +1,6 @@
 export const UserReducer = (state = {}, action) => {
 	switch (action.type) {
-		case 'USER':
+		case 'PLAYER':
 			// console.log({ action, state });
 			return { ...state, ...action.data };
 		default:

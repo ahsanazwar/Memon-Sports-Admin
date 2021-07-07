@@ -1,10 +1,11 @@
 import React from "react";
 import {Container,Row,Col} from 'react-bootstrap';
+import Header from '../components/Header'; 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
-function Home() {
+const Home = (props) => {
     const settings = {
         autoplay:true,
         dots: true,
@@ -29,6 +30,7 @@ function Home() {
             {/* <div className="schedule-section">
                 <img className="img-fluid cricket-img" src={"/assets/images/schedule.jpg"} />
             </div> */}
+            <Header />
             <div className="latest-news">
                 <div className="news-label"><span>Latest News</span></div>
                 <marquee behavior="infinite" direction="left">Cricket 2021 Cricket 2021 Cricket 2021 Cricket 2021 Cricket 2021 Cricket 2021 Cricket 2021 Cricket 2021</marquee>

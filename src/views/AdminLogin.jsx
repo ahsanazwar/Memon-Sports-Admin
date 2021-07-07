@@ -1,62 +1,143 @@
 import React from "react";
-import {Form} from 'react-bootstrap';
+import { Row, Col, Layout, Switch, notification  } from 'antd';
+import LoginForm from '../components/LoginForm'; 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as userActions from '../actions/userActions';
+import { withCookies } from 'react-cookie';
+import Header from '../components/Header';
+class AdminLogin extends React.Component {
 
-function AdminLogin() {
-    return(
-        <>
-            <div className="adminLogin">
-                <div className="limiter">
-                    <div className="container-login100">
-                        <div className="wrap-login100">
-                            <form className="login100-form validate-form">
-                                <span className="login100-form-title p-b-43">
-                                    Login to continue
-                                </span>                          
-                                <div className="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                                    <Form.Control type="email" placeholder="email" />
-                                    <span className="focus-input100"></span>
-                                    <span className="label-input100">Email</span>
-                                </div>                                
-                                <div className="wrap-input100 validate-input" data-validate="Password is required">
-                                    <Form.Control type="password" placeholder="pass" />
-                                    <span className="focus-input100"></span>
-                                    <span className="label-input100">Password</span>
-                                </div>
-                                <div className="flex-sb-m w-full p-t-3 p-b-32">
-                                    <div>
-                                        <a href="#" className="txt1">
-                                            Forgot Password?
-                                        </a>
-                                    </div>
-                                </div>
-                                <div className="container-login100-form-btn">
-                                    <button className="login100-form-btn">
-                                        Login
-                                    </button>
-                                </div>                              
-                                {/* <div className="text-center p-t-46 p-b-20">
-                                    <span className="txt2">
-                                        or sign up using
-                                    </span>
-                                </div>
+    constructor(props) {
+        super(props);
+        this.state = {
+            type: 'players',
+            secret: null,
+            loginType:true,
+            apiLoading: false
+        }; 
+    }
 
-                                <div className="login100-form-social flex-c-m">
-                                    <a href="#" className="login100-form-social-item flex-c-m bg1 m-r-5">
-                                        <i className="fa fa-facebook-f" aria-hidden="true"></i>
-                                    </a>
+    componentDidMount(){
 
-                                    <a href="#" className="login100-form-social-item flex-c-m bg2 m-r-5">
-                                        <i className="fa fa-twitter" aria-hidden="true"></i>
-                                    </a>
-                                </div> */}
-                            </form>
-                            <div className="login100-more"></div>
-                        </div>
-                    </div>
+        console.log(this.props.cookies); 
+        const pathArray = window.location.pathname.split( '/' );
+        if(pathArray[pathArray.length-1] == 'adminlogin') {
+            this.setState({
+                type: 'admin',
+                secret: '002dd535-7762-4c72-b212-a28434531d77'
+            });
+        } 
+    }
+
+    openNotification = (type, title, description) => {
+        notification[type]({
+            placement: 'topRight',
+            bottom: 50,
+            message: title,
+            description: description
+        });
+    }
+
+    onSubmit = (value) => {
+        this.setState({
+            apiLoading: true
+        });
+        const params = {}
+        if(this.state.loginType == true) {
+            params.email = value.email;
+        }else {
+            params.phone = value.phone;
+        }
+        params.password = value.password;
+        this.props.actions.loginAdmin(params, {secret: this.state.secret}).then((val)=>{
+             console.log(val) 
+            if(val.failed) {
+                this.openNotification('error','Error', val.error.meta.message); 
+            }else {
+                this.props.cookies.set('user', {...val.data.data, type:this.state.type}); 
+                this.openNotification('success','Success',undefined);
+            }
+ 
+            this.setState({
+                apiLoading: false
+            });
+            
+        });
+    }
+
+    loginTypeHandler = (value) => {
+        this.setState({
+            loginType:value
+        }); 
+    }
+
+
+    validate = (values) => {
+		const errors = {};
+
+        if(this.state.loginType) {
+            if (!values.email) {
+                errors.email = 'Email is required.';
+            }
+        } else {
+            if (!values.phone) {
+                errors.phone = 'Phone Number is required.';
+            } else if (values.phone.length != 13) {
+                errors.phone =
+                    'Valid phone number is required. It should be upto 13 digits and Phone Number Should look like this +92335XXXXXXX';
+            } else {
+                if(values.phone[0] == '0') {
+                    errors.phone =
+                        'Phone Number Should look like this +92335XXXXXXX';
+                }
+            }
+        }
+		
+		
+        
+        
+        
+
+	 
+
+		if (!values.password) {
+			errors.password = 'Password is required.';
+		}
+
+
+		return errors;
+	}; 
+
+    render() {
+        return(
+            <>
+                <Header />
+                <div className="adminLogin">
+                    <Row>
+                        <Col md={24} xs={24} > 
+                            <LoginForm apiLoading={this.state.apiLoading} onSubmit={this.onSubmit} validate={this.validate} title={
+                            this.state.type == 'admin' ? 'Admin Login' : 'Player Login'} loginType={this.state.loginType} loginTypeHandler = {this.loginTypeHandler} />
+                        </Col>
+                    </Row>
                 </div>
-            </div>
-        </>
-    )
+            </>
+        )
+    }
 }
 
-export default AdminLogin;
+
+const mapStateToProps = (state) => {
+	return {};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		actions: bindActionCreators({ ...userActions }, dispatch),
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(withCookies(AdminLogin));
