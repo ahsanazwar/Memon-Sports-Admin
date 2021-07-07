@@ -188,15 +188,17 @@ class PlayersList extends React.Component {
 
 
     setSorter = (sorter) => {
-        const toSort = [sorter.columnKey, sorter.order == "ascend" ? "asc" : "desc"];
-        const filters = this.state.filters;
-        this.setState({
-            filters: {
-                ...filters,
-                toSort
-            }
-        });
-        this.fetchPlayers();
+        if(sorter.columnKey){
+            const toSort = [sorter.columnKey, sorter.order == "ascend" ? "asc" : "desc"];
+            const filters = this.state.filters;
+            this.setState({
+                filters: {
+                    ...filters,
+                    toSort
+                }
+            });
+            this.fetchPlayers();
+        } 
     }
 
     
@@ -243,6 +245,7 @@ class PlayersList extends React.Component {
                             }}/>
                         </div>)
                     }} loading={false} columns={this.columns} pagination={{ total:this.state.total,  defaultPageSize: this.state.defaultLimit, showSizeChanger: true, pageSizeOptions: [this.state.defaultLimit, '50', '100']}} onChange={(pagination, filters, sorter)=> {
+                        console.log({pagination, filters, sorter}) 
                         this.setPager(pagination); 
                         this.setSorter(sorter); 
                         this.setFilters(filters); 

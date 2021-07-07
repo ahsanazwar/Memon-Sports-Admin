@@ -5,7 +5,7 @@ body{
 .main-header{
     width: 100%;
     z-index: 99;
-    background: #003767;
+    background: #000;
     padding: em(20) 0;
     nav{
     display: flex;
@@ -32,15 +32,13 @@ body{
     }
 }
 .main-logo{
-    width: em(300);
     img{
-        width: 100%;
-        height: em(50);
+        height: em(85);
         object-fit: cover;
     }
 }
 .home-page-banner{
-    background-image: url('../assets/images/banner-bg.jpg');
+    background-image: url('../assets/images/register-bg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -64,7 +62,7 @@ body{
         padding: em(15) em(35);
         font-size: em(25);
         color: $white !important;
-        background-color:#133290;
+        background-color:#b69740;
         border-radius: em(45);
     }
 }
@@ -113,14 +111,14 @@ body{
     }
 }
 .main-footer{
-    background-color: #051344;
+    background-color: #000;
     padding: em(25) 0;
     .main-footer-wrap{
         display: flex;
         align-items: center;
         justify-content: space-between;
         .footer-logo{
-            width: em(200);
+            width: em(55);
             img{
                 width: 100%;
             }
@@ -167,7 +165,7 @@ body{
     }
     .slides{
         position: relative;
-        background: #020E48;
+        background: #000;
         &::before{
             content: '';
             height: 100%;
@@ -207,7 +205,7 @@ body{
     position: relative;
     border-bottom: 1px solid #fff;
     marquee{
-        background-color: #051344;
+        background-color: #b69740;
         color: #fff;
         height: 100%;
         display: block;
